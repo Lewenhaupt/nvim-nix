@@ -97,6 +97,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 require('nixCatsUtils').setup {
   non_nix_value = true,
 }
+-- For here.term
+vim.opt.hidden = true
 
 -- Set <space> as the leader key
 -- See `:help mapleader`

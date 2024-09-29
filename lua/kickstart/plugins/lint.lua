@@ -3,15 +3,19 @@ return {
   { -- Linting
     'mfussenegger/nvim-lint',
     -- NOTE: nixCats: return true only if category is enabled, else false
-    enabled = require('nixCatsUtils').enableForCategory("kickstart-lint"),
+    enabled = require('nixCatsUtils').enableForCategory 'kickstart-lint',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        javascript = { 'biomejs', 'eslint_d' },
+        javascriptreact = { 'biomejs', 'eslint_d' },
+        typescript = { 'biomejs', 'eslint_d' },
+        typescriptreact = { 'biomejs', 'eslint_d' },
+        json = { 'jsonlint' },
       }
 
-      -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
       -- lint.linters_by_ft = lint.linters_by_ft or {}
       -- lint.linters_by_ft['markdown'] = { 'markdownlint' }

@@ -33,6 +33,22 @@
         "type": "github"
       }
     },
+    "plugins-here-term": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727485766,
+        "narHash": "sha256-YGEVduE/vQ2gTCPHAJpEcAeFagaxhDSaVZWfNGcB71g=",
+        "owner": "jaimecgomezz",
+        "repo": "here.term",
+        "rev": "35226f038515f16a2fb6b6e71a1816d81b16a514",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jaimecgomezz",
+        "repo": "here.term",
+        "type": "github"
+      }
+    },
     "plugins-ts-error-translator-nvim": {
       "flake": false,
       "locked": {
@@ -69,6 +85,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-here-term": "plugins-here-term",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim"
       }

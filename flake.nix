@@ -33,6 +33,12 @@
       url = "github:marilari88/twoslash-queries.nvim";
       flake = false;
     };
+
+    "plugins-here-term" = {
+      url = "github:jaimecgomezz/here.term";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -173,6 +179,7 @@
           typescript-tools-nvim
           pkgs.neovimPlugins.ts-error-translator-nvim
           pkgs.neovimPlugins.twoslash-queries-nvim
+          pkgs.neovimPlugins.here-term
           # This is for if you only want some of the grammars
           # (nvim-treesitter.withPlugins (
           #   plugins: with plugins; [
