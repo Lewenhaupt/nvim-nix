@@ -1,0 +1,79 @@
+{
+  "nodes": {
+    "nixCats": {
+      "locked": {
+        "dir": "nix",
+        "lastModified": 1726523552,
+        "narHash": "sha256-RqOJeQlX2+H5j+RdFzTc7QSf4/qK4Oe01KpE2713Cws=",
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "rev": "2b455dab0eee7484ce7c956dccda0a7c2111c18b",
+        "type": "github"
+      },
+      "original": {
+        "dir": "nix",
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1727266098,
+        "narHash": "sha256-AHTKbJ9ffR7Nx+XcR2XP0AYLI4OlUh2IGh4SAkdG5Ig=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "4f31540079322e6013930b5b2563fd10f96917f0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plugins-ts-error-translator-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727112009,
+        "narHash": "sha256-8eUDQJYfhEsqv9G1QU96k5tTIcVa8oR8/SAoFN1XZ5I=",
+        "owner": "dmmulroy",
+        "repo": "ts-error-translator.nvim",
+        "rev": "3bd23c4cfe4c2edc99278e01b75cdb2a26f03152",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dmmulroy",
+        "repo": "ts-error-translator.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-twoslash-queries-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719351982,
+        "narHash": "sha256-YGFRbceYFswAbiOrMCx8ynEkQ45MkSOm0LHccYXyuXM=",
+        "owner": "marilari88",
+        "repo": "twoslash-queries.nvim",
+        "rev": "b92622c7b71eceefabd02eef24236041069904b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marilari88",
+        "repo": "twoslash-queries.nvim",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixCats": "nixCats",
+        "nixpkgs": "nixpkgs",
+        "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
+        "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
