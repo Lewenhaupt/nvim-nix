@@ -278,7 +278,7 @@
     packageDefinitions = {
       # These are the names of your packages
       # you can include as many as you wish.
-      nvim = { pkgs , ... }: {
+      lewenhaupt-nvim = { pkgs , ... }: {
         # they contain a settings set defined above
         # see :help nixCats.flake.outputs.settings
         settings = {
@@ -325,7 +325,7 @@
     };
   # In this section, the main thing you will need to do is change the default package name
   # to the name of the packageDefinitions entry you wish to use as the default.
-    defaultPackageName = "nvim";
+    defaultPackageName = "lewenhaupt-nvim";
   in
 
 
