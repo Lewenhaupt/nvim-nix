@@ -180,6 +180,10 @@
           pkgs.neovimPlugins.ts-error-translator-nvim
           pkgs.neovimPlugins.twoslash-queries-nvim
           pkgs.neovimPlugins.here-term
+          substitute-nvim
+          arrow-nvim
+          noice-nvim
+          nui-nvim
           # This is for if you only want some of the grammars
           # (nvim-treesitter.withPlugins (
           #   plugins: with plugins; [
@@ -281,7 +285,7 @@
           wrapRc = true;
           # IMPORTANT:
           # your alias may not conflict with your other packages.
-          aliases = [ "vim" ];
+          aliases = [ "vim" "vi" "nvim" ];
           # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
         };
         # and a set of categories that you want
