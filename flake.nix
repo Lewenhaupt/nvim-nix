@@ -65,7 +65,7 @@
     # will not apply to module imports
     # as that will have your system values
     extra_pkg_config = {
-      # allowUnfree = true;
+      allowUnfree = true;
     };
     # sometimes our overlays require a ${system} to access the overlay.
     # management of this variable is one of the harder parts of using flakes.
@@ -128,6 +128,7 @@
           stylua
           nodejs-18_x
           typescript
+          nixfmt
         ];
         kickstart-debug = [
           delve
