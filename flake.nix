@@ -376,9 +376,10 @@
         categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
     };
     # and the same for home manager
-    homeModule = utils.mkHomeModules {
+    homeModule.default = utils.mkHomeModules {
+      inherit nixpkgs;
       inherit defaultPackageName dependencyOverlays luaPath
-        categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
+        categoryDefinitions packageDefinitions extra_pkg_config;
     };
     inherit utils;
     inherit (utils) templates;
