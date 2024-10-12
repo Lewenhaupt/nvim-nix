@@ -5,6 +5,9 @@
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Remove default s mapping
+vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
+
 -- Makes w behave like inner-word by default
 vim.keymap.set('o', 'w', 'iw', { remap = false }) -- the remap = false is default so u could omit if you want
 
