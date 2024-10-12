@@ -298,6 +298,7 @@
             # see :help nixCats.flake.outputs.settings
             settings = {
               wrapRc = true;
+              configDirName = "nixCats-nvim";
               # IMPORTANT:
               # your alias may not conflict with your other packages.
               aliases = [
@@ -348,6 +349,7 @@
             # see :help nixCats.flake.outputs.settings
             settings = {
               wrapRc = false;
+              configDirName = "nixCats-nvim";
               unwrappedCfgPath = "$HOME/git/nvim-nix";
               # IMPORTANT:
               # your alias may not conflict with your other packages.
