@@ -103,18 +103,34 @@ return {
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]earch [H]elp' })
-    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]earch [K]eymaps' })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
+    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
     vim.keymap.set('n', '<leader>ff', function()
       builtin.find_files { hidden = true, no_ignore = true }
-    end, { desc = '[F]earch [F]iles' })
-    vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]earch [S]elect Telescope' })
-    vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]earch by [G]rep' })
-    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]earch [D]iagnostics' })
-    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]earch [R]esume' })
-    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]earch Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    end, { desc = '[F]ind [F]iles' })
+    vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]ind [S]elect Telescope' })
+    vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
+    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
+    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
+    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
+    vim.keymap.set('n', '<leader><leader>', function()
+      if #vim.api.nvim_list_bufs() > 0 then
+        local buf = vim.api.nvim_get_current_buf() -- get the current buffer
+        -- local buftype = vim.api.nvim_get_option_value('buftype', { buf = buf })
+        -- local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
+        -- print('buftype', buftype, 'bufnr', buf)
+        local bufname = vim.api.nvim_buf_get_name(buf)
+        -- if buftype ~= 'acwrite' and buftype ~= 'nofile' and buftype ~= '' then
+        if bufname ~= '' then
+          builtin.buffers()
+        else
+          builtin.find_files { hidden = true, no_ignore = true }
+        end
+      else
+        builtin.find_files { hidden = true, no_ignore = true }
+      end
+    end, { desc = '[ ] Find existing buffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
@@ -137,7 +153,16 @@ return {
     -- Shortcut for searching your Neovim configuration files
     vim.keymap.set('n', '<leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config', hidden = true, no_ignore = true }
-    end, { desc = '[F]earch [N]eovim files' })
+    end, { desc = '[F]find [N]eovim files' })
+    -- https://www.reddit.com/r/neovim/comments/14m2y7a/comment/jq1h6v2/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
   end,
+
+  -- vim.api.nvim_create_autocmd('UIEnter', {
+  -- callback = function()
+  -- if vim.fn.argv(0) == '' then
+  -- require('telescope.builtin').find_files()
+  -- end
+  -- end,
+  -- }),
 }
 -- vim: ts=2 sts=2 sw=2 et
