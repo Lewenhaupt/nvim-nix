@@ -348,9 +348,9 @@
             # they contain a settings set defined above
             # see :help nixCats.flake.outputs.settings
             settings = {
-              wrapRc = true;
+              wrapRc = false;
               configDirName = "nixCats-nvim";
-              unwrappedCfgPath = "/home/hugo/git/nvim-nix";
+              unwrappedCfgPath = "$HOME/git/nvim-nix";
               # IMPORTANT:
               # your alias may not conflict with your other packages.
               aliases = [ "testnvim" ];
