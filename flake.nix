@@ -342,13 +342,13 @@
               };
             };
           };
-        unwrappedNvim =
+        testnvim =
           { pkgs, ... }:
           {
             # they contain a settings set defined above
             # see :help nixCats.flake.outputs.settings
             settings = {
-              wrapRc = false;
+              wrapRc = true;
               configDirName = "nixCats-nvim";
               unwrappedCfgPath = "/home/hugo/git/nvim-nix";
               # IMPORTANT:
