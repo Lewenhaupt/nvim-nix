@@ -350,7 +350,7 @@
             settings = {
               wrapRc = false;
               configDirName = "nixCats-nvim";
-              unwrappedCfgPath = "$HOME/git/nvim-nix";
+              unwrappedCfgPath = "/home/hugo/git/nvim-nix";
               # IMPORTANT:
               # your alias may not conflict with your other packages.
               aliases = [ "tnvim" ];
