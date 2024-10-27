@@ -49,6 +49,22 @@
         "type": "github"
       }
     },
+    "plugins-iswap-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716489980,
+        "narHash": "sha256-lAYHvz23f9nJ6rb0NIm+1aq0Vr0SwjPVitPuROtUS2A=",
+        "owner": "mizlan",
+        "repo": "iswap.nvim",
+        "rev": "e02cc91f2a8feb5c5a595767d208c54b6e3258ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mizlan",
+        "repo": "iswap.nvim",
+        "type": "github"
+      }
+    },
     "plugins-ts-error-translator-nvim": {
       "flake": false,
       "locked": {
@@ -86,6 +102,7 @@
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
         "plugins-here-term": "plugins-here-term",
+        "plugins-iswap-nvim": "plugins-iswap-nvim",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim"
       }

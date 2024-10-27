@@ -39,6 +39,11 @@
       flake = false;
     };
 
+    "plugins-iswap-nvim" = {
+      url = "github:mizlan/iswap.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -208,6 +213,8 @@
               arrow-nvim
               noice-nvim
               nui-nvim
+              pkgs.neovimPlugins.iswap-nvim
+              lazygit-nvim
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
               #   plugins: with plugins; [
