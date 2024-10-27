@@ -21,8 +21,8 @@
   description = "A Lua-natic's neovim flake, with extra cats! nixCats!";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:khaneliman/nixpkgs/sqlite";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:khaneliman/nixpkgs/sqlite";
     nixCats.url = "github:BirdeeHub/nixCats-nvim?dir=nix";
 
     "plugins-ts-error-translator-nvim" = {
@@ -230,8 +230,8 @@
               pkgs.neovimPlugins.iswap-nvim
               pkgs.neovimPlugins.moody-nvim
               lazygit-nvim
-              sqlite-lua
-              # pkgs.neovimPlugins.sqlite-lua
+              # sqlite-lua
+              pkgs.neovimPlugins.sqlite-lua
               telescope-fzy-native-nvim
               telescope-fzf-native-nvim
               pkgs.neovimPlugins.yankbank-nvim
