@@ -114,7 +114,7 @@ return {
     vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
     vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
     vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader><leader>', function()
+    vim.keymap.set('n', '<leader>fb', function()
       local ls = vim.fn.execute ':ls'
       local lines = {}
       for s in string.gmatch(ls, '([^\r\n]*)') do
@@ -127,7 +127,7 @@ return {
       else
         builtin.find_files { hidden = true, no_ignore = true }
       end
-    end, { desc = '[ ] Find existing buffers' })
+    end, { desc = '[F]ind existing [B]uffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()

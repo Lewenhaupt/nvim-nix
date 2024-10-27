@@ -81,6 +81,22 @@
         "type": "github"
       }
     },
+    "plugins-sqlite-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713684746,
+        "narHash": "sha256-nbvc2hoOscOYoPPFUPnYdnXDwAPh5kiC2vI3lDP2QNo=",
+        "owner": "kkharji",
+        "repo": "sqlite.lua",
+        "rev": "d0ffd703b56d090d213b497ed4eb840495f14a11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kkharji",
+        "repo": "sqlite.lua",
+        "type": "github"
+      }
+    },
     "plugins-ts-error-translator-nvim": {
       "flake": false,
       "locked": {
@@ -120,6 +136,7 @@
         "plugins-here-term": "plugins-here-term",
         "plugins-iswap-nvim": "plugins-iswap-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
+        "plugins-sqlite-lua": "plugins-sqlite-lua",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim"
       }

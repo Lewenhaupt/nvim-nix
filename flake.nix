@@ -33,7 +33,6 @@
       url = "github:marilari88/twoslash-queries.nvim";
       flake = false;
     };
-
     "plugins-here-term" = {
       url = "github:jaimecgomezz/here.term";
       flake = false;
@@ -48,6 +47,12 @@
       url = "github:svampkorg/moody.nvim";
       flake = false;
     };
+
+    "plugins-sqlite-lua" = {
+      url = "github:kkharji/sqlite.lua";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -183,7 +188,6 @@
               gitsigns-nvim
               which-key-nvim
               telescope-nvim
-              telescope-fzf-native-nvim
               telescope-ui-select-nvim
               nvim-web-devicons
               plenary-nvim
@@ -220,6 +224,11 @@
               pkgs.neovimPlugins.iswap-nvim
               pkgs.neovimPlugins.moody-nvim
               lazygit-nvim
+              # sqlite-lua
+              pkgs.neovimPlugins.sqlite-lua
+              telescope-fzy-native-nvim
+              telescope-fzf-native-nvim
+
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
               #   plugins: with plugins; [
@@ -259,6 +268,7 @@
           # variable available to nvim runtime
           sharedLibraries = {
             general = with pkgs; [
+              sqlite
               # libgit2
             ];
           };
@@ -269,6 +279,9 @@
           environmentVariables = {
             test = {
               CATTESTVAR = "It worked!";
+            };
+            general = {
+              LIBSQLITE = ''"${pkgs.sqlite.out}/lib/libsqlite3.so"'';
             };
           };
 

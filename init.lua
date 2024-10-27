@@ -97,6 +97,10 @@ P.S. You can delete this when you're done too. It's your config now! :)
 require('nixCatsUtils').setup {
   non_nix_value = true,
 }
+
+-- vim.g.sqlite_clib_path = '/nix/store/g2i5j8i0bwfih7hg2wbc15k2969bckn3-sqlite-3.46.0/lib/libsqlite3.so'
+-- vim.g.sqlite_clib_path = 'TESTING////'
+
 -- For here.term
 vim.opt.hidden = true
 
