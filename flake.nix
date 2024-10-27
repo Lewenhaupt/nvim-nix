@@ -161,6 +161,7 @@
               eslint
               eslint_d
               prettierd
+              jsonlint
             ];
           };
 
