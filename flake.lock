@@ -65,6 +65,22 @@
         "type": "github"
       }
     },
+    "plugins-moody-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1728934839,
+        "narHash": "sha256-BvkOvXT1exAFCJPg4wCAqCFCSeSYJvff+HTvRf0c2wk=",
+        "owner": "svampkorg",
+        "repo": "moody.nvim",
+        "rev": "47d37deaa0fb575f07c6675aff6c6c2754d8ed8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "svampkorg",
+        "repo": "moody.nvim",
+        "type": "github"
+      }
+    },
     "plugins-ts-error-translator-nvim": {
       "flake": false,
       "locked": {
@@ -103,6 +119,7 @@
         "nixpkgs": "nixpkgs",
         "plugins-here-term": "plugins-here-term",
         "plugins-iswap-nvim": "plugins-iswap-nvim",
+        "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim"
       }

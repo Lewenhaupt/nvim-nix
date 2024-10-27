@@ -44,6 +44,10 @@
       flake = false;
     };
 
+    "plugins-moody-nvim" = {
+      url = "github:svampkorg/moody.nvim";
+      flake = false;
+    };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -214,6 +218,7 @@
               noice-nvim
               nui-nvim
               pkgs.neovimPlugins.iswap-nvim
+              pkgs.neovimPlugins.moody-nvim
               lazygit-nvim
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
