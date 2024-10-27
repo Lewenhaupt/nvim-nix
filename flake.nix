@@ -235,6 +235,7 @@
               telescope-fzy-native-nvim
               telescope-fzf-native-nvim
               pkgs.neovimPlugins.yankbank-nvim
+              satellite-nvim
 
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
