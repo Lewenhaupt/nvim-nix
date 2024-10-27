@@ -115,18 +115,15 @@ return {
     vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
     vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', function()
-      if #vim.api.nvim_list_bufs() > 0 then
-        local buf = vim.api.nvim_get_current_buf() -- get the current buffer
-        -- local buftype = vim.api.nvim_get_option_value('buftype', { buf = buf })
-        -- local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
-        -- print('buftype', buftype, 'bufnr', buf)
-        local bufname = vim.api.nvim_buf_get_name(buf)
-        -- if buftype ~= 'acwrite' and buftype ~= 'nofile' and buftype ~= '' then
-        if bufname ~= '' then
-          builtin.buffers()
-        else
-          builtin.find_files { hidden = true, no_ignore = true }
+      local ls = vim.fn.execute ':ls'
+      local lines = {}
+      for s in string.gmatch(ls, '([^\r\n]*)') do
+        if s ~= '' then
+          table.insert(lines, s)
         end
+      end
+      if #lines > 1 then
+        builtin.buffers()
       else
         builtin.find_files { hidden = true, no_ignore = true }
       end
