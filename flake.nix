@@ -161,7 +161,7 @@
               eslint
               eslint_d
               prettierd
-              jsonlint
+              nodePackages.jsonlint
             ];
           };
 
