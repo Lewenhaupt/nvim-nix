@@ -54,6 +54,11 @@
       flake = false;
     };
 
+    "plugins-yankbank-nvim" = {
+      url = "github:ptdewey/yankbank-nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -229,6 +234,7 @@
               # pkgs.neovimPlugins.sqlite-lua
               telescope-fzy-native-nvim
               telescope-fzf-native-nvim
+              pkgs.neovimPlugins.yankbank-nvim
 
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (

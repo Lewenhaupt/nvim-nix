@@ -5,7 +5,6 @@ return {
     require('telescope').load_extension 'smart_open'
   end,
   keys = {
-
     {
       '<leader><leader>',
       mode = { 'n' },

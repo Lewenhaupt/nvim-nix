@@ -129,6 +129,22 @@
         "type": "github"
       }
     },
+    "plugins-yankbank-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727446943,
+        "narHash": "sha256-KrsdO+3R/uy/IyVR4LI3lljFIBXsTrTqpU/co83OXQk=",
+        "owner": "ptdewey",
+        "repo": "yankbank-nvim",
+        "rev": "e917ea8c161957c5c8a0dffa289eb550efce16db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ptdewey",
+        "repo": "yankbank-nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "nixCats": "nixCats",
@@ -138,7 +154,8 @@
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-sqlite-lua": "plugins-sqlite-lua",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
-        "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim"
+        "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim",
+        "plugins-yankbank-nvim": "plugins-yankbank-nvim"
       }
     }
   },
