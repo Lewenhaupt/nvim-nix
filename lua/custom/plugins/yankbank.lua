@@ -4,6 +4,7 @@ return {
   config = function()
     require('yankbank').setup {
       persist_type = 'sqlite',
+      db_path = vim.fn.stdpath 'data',
     }
   end,
   keys = {

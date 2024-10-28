@@ -132,11 +132,11 @@
     "plugins-yankbank-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1727446943,
-        "narHash": "sha256-KrsdO+3R/uy/IyVR4LI3lljFIBXsTrTqpU/co83OXQk=",
+        "lastModified": 1730120355,
+        "narHash": "sha256-gl4CMBDNcPZCfO8TUzqy8VtAWantsV54ayHlGrhMsj8=",
         "owner": "ptdewey",
         "repo": "yankbank-nvim",
-        "rev": "e917ea8c161957c5c8a0dffa289eb550efce16db",
+        "rev": "ded8f01bd6a7887310e14d463c8aa55eb79ec281",
         "type": "github"
       },
       "original": {
