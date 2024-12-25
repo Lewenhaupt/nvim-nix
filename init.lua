@@ -350,7 +350,12 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
+      require('which-key').setup {
+        keys = {
+          scroll_down = '<c-j>', -- binding to scroll down inside the popup
+          scroll_up = '<c-k>', -- binding to scroll up inside the popup
+        },
+      }
 
       -- Document existing key chains
       require('which-key').add {
