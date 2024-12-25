@@ -671,6 +671,17 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
       },
     },
     opts = {
+      formatters = {
+        prettier = {
+          require_cwd = true,
+        },
+        prettierd = {
+          require_cwd = true,
+        },
+        biome = {
+          require_cwd = true,
+        },
+      },
       notify_on_error = false,
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -690,7 +701,10 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier', 'biome' } },
+        typescript = { { 'prettierd', 'prettier', 'biome' } },
+        javascriptreact = { { 'prettierd', 'prettier', 'biome' } },
+        typescriptreact = { { 'prettierd', 'prettier', 'biome' } },
       },
     },
   },
