@@ -78,6 +78,11 @@
       url = "github:tomiis4/hypersonic.nvim";
       flake = false;
     };
+
+    "plugins-messenger-nvim" = {
+      url = "github:lsig/messenger.nvim";
+      flake = false;
+    };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
