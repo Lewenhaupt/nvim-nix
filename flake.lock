@@ -33,6 +33,22 @@
         "type": "github"
       }
     },
+    "plugins-diffview-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718279802,
+        "narHash": "sha256-SX+ybIzL/w6uyCy4iZKnWnzTFwqB1oXSgyYVAdpdKi8=",
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "type": "github"
+      }
+    },
     "plugins-helpview-nvim": {
       "flake": false,
       "locked": {
@@ -181,6 +197,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-diffview-nvim": "plugins-diffview-nvim",
         "plugins-helpview-nvim": "plugins-helpview-nvim",
         "plugins-here-term": "plugins-here-term",
         "plugins-iswap-nvim": "plugins-iswap-nvim",

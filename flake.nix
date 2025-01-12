@@ -68,6 +68,11 @@
       url = "github:kungfusheep/snipe-lsp.nvim";
       flake = false;
     };
+
+    "plugins-diffview-nvim" = {
+      url = "github:sindrets/diffview.nvim";
+      flake = false;
+    };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -246,6 +251,7 @@
               pkgs.neovimPlugins.yankbank-nvim
               satellite-nvim
               pkgs.neovimPlugins.helpview-nvim
+              pkgs.neovimPlugins.diffview-nvim
 
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
