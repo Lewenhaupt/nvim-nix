@@ -73,6 +73,11 @@
       url = "github:sindrets/diffview.nvim";
       flake = false;
     };
+
+    "plugins-hypersonic-nvim" = {
+      url = "github:tomiis4/hypersonic.nvim";
+      flake = false;
+    };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -252,6 +257,7 @@
               satellite-nvim
               pkgs.neovimPlugins.helpview-nvim
               pkgs.neovimPlugins.diffview-nvim
+              pkgs.neovimPlugins.hypersonic-nvim
 
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
