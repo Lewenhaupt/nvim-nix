@@ -64,6 +64,10 @@
       flake = false;
     };
 
+    "plugins-snipe-lsp-nvim" = {
+      url = "github:kungfusheep/snipe-lsp.nvim";
+      flake = false;
+    };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 

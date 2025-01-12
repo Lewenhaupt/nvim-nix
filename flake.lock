@@ -97,6 +97,22 @@
         "type": "github"
       }
     },
+    "plugins-snipe-lsp-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732499255,
+        "narHash": "sha256-xxoAL7aHW9VOgtcalvXiia34gPp/dmyOXbi69FOOZ1U=",
+        "owner": "kungfusheep",
+        "repo": "snipe-lsp.nvim",
+        "rev": "253ef9b4dbb794ecdf435f3c3f8a1578c6f63067",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kungfusheep",
+        "repo": "snipe-lsp.nvim",
+        "type": "github"
+      }
+    },
     "plugins-sqlite-lua": {
       "flake": false,
       "locked": {
@@ -169,6 +185,7 @@
         "plugins-here-term": "plugins-here-term",
         "plugins-iswap-nvim": "plugins-iswap-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
+        "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
         "plugins-sqlite-lua": "plugins-sqlite-lua",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim",
