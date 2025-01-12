@@ -83,6 +83,11 @@
       url = "github:lsig/messenger.nvim";
       flake = false;
     };
+    "plugins-buffer-reopen-nvim" = {
+      url = "github:iamyoki/buffer-reopen.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -263,6 +268,7 @@
               pkgs.neovimPlugins.helpview-nvim
               pkgs.neovimPlugins.diffview-nvim
               pkgs.neovimPlugins.hypersonic-nvim
+              pkgs.neovimPlugins.buffer-reopen-nvim
 
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (

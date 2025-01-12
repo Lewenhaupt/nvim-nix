@@ -33,6 +33,22 @@
         "type": "github"
       }
     },
+    "plugins-buffer-reopen-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721724093,
+        "narHash": "sha256-JCUfrVngNEiWkhcuHzv2e4qxSriHWsv4CL7Rmt4qxbg=",
+        "owner": "iamyoki",
+        "repo": "buffer-reopen.nvim",
+        "rev": "e08dfc4bfea21bbb771f24e1dd032b437a0f8401",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iamyoki",
+        "repo": "buffer-reopen.nvim",
+        "type": "github"
+      }
+    },
     "plugins-diffview-nvim": {
       "flake": false,
       "locked": {
@@ -81,6 +97,22 @@
         "type": "github"
       }
     },
+    "plugins-hypersonic-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723397494,
+        "narHash": "sha256-V9dBAadK4tx+M+adWxKZ+7t6wKdA0ojIgBd+sNysZJ8=",
+        "owner": "tomiis4",
+        "repo": "hypersonic.nvim",
+        "rev": "734dfbfbe51952f102a9b439d53d4267bb0024cd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tomiis4",
+        "repo": "hypersonic.nvim",
+        "type": "github"
+      }
+    },
     "plugins-iswap-nvim": {
       "flake": false,
       "locked": {
@@ -94,6 +126,22 @@
       "original": {
         "owner": "mizlan",
         "repo": "iswap.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-messenger-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721293628,
+        "narHash": "sha256-ld2h000ZX3jZrgpcwW5ss6L0Uvu5fWXJCBAScFnvm/k=",
+        "owner": "lsig",
+        "repo": "messenger.nvim",
+        "rev": "309fec2ddd3de55eba2781b676931b37ce8190af",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lsig",
+        "repo": "messenger.nvim",
         "type": "github"
       }
     },
@@ -197,10 +245,13 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-buffer-reopen-nvim": "plugins-buffer-reopen-nvim",
         "plugins-diffview-nvim": "plugins-diffview-nvim",
         "plugins-helpview-nvim": "plugins-helpview-nvim",
         "plugins-here-term": "plugins-here-term",
+        "plugins-hypersonic-nvim": "plugins-hypersonic-nvim",
         "plugins-iswap-nvim": "plugins-iswap-nvim",
+        "plugins-messenger-nvim": "plugins-messenger-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
         "plugins-sqlite-lua": "plugins-sqlite-lua",
