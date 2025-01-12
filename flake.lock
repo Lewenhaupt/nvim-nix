@@ -33,6 +33,22 @@
         "type": "github"
       }
     },
+    "plugins-helpview-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724653959,
+        "narHash": "sha256-x5ZV/1LKrxhQWsxsJwrIfD7BogKO7H2GKzDt3PABEh8=",
+        "owner": "OXY2DEV",
+        "repo": "helpview.nvim",
+        "rev": "857aec1dab331252910da158ab6cbfbc65239c71",
+        "type": "github"
+      },
+      "original": {
+        "owner": "OXY2DEV",
+        "repo": "helpview.nvim",
+        "type": "github"
+      }
+    },
     "plugins-here-term": {
       "flake": false,
       "locked": {
@@ -149,6 +165,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-helpview-nvim": "plugins-helpview-nvim",
         "plugins-here-term": "plugins-here-term",
         "plugins-iswap-nvim": "plugins-iswap-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",

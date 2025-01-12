@@ -59,6 +59,11 @@
       flake = false;
     };
 
+    "plugins-helpview-nvim" = {
+      url = "github:OXY2DEV/helpview.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -236,6 +241,7 @@
               telescope-fzf-native-nvim
               pkgs.neovimPlugins.yankbank-nvim
               satellite-nvim
+              pkgs.neovimPlugins.helpview-nvim
 
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
