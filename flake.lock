@@ -66,11 +66,11 @@
     "plugins-helpview-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1724653959,
-        "narHash": "sha256-x5ZV/1LKrxhQWsxsJwrIfD7BogKO7H2GKzDt3PABEh8=",
+        "lastModified": 1740144838,
+        "narHash": "sha256-BtZ5l/cId5PUUZfd61FwIf1bQwLJ7vJHI+z1DMv5bPE=",
         "owner": "OXY2DEV",
         "repo": "helpview.nvim",
-        "rev": "857aec1dab331252910da158ab6cbfbc65239c71",
+        "rev": "2bc021a2cf1e6ce103f95ceffc172cfefbbf9cfc",
         "type": "github"
       },
       "original": {
@@ -82,11 +82,11 @@
     "plugins-here-term": {
       "flake": false,
       "locked": {
-        "lastModified": 1727886356,
-        "narHash": "sha256-F+c5CtS03mlKGEcH0ga7Q+r5LQwRlKlh7tQ7Elt7SZY=",
+        "lastModified": 1739562069,
+        "narHash": "sha256-PDPKAbrX5hiEVPuB2yajkMjlgB2BERttm9mx6MAOBKg=",
         "owner": "jaimecgomezz",
         "repo": "here.term",
-        "rev": "ba75c4d19791b4850712f394a9ab1926b31bb8eb",
+        "rev": "3e1ec5792922b14ccc6af7ef41e59ce63611d314",
         "type": "github"
       },
       "original": {
@@ -130,11 +130,11 @@
     "plugins-moody-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1728934839,
-        "narHash": "sha256-BvkOvXT1exAFCJPg4wCAqCFCSeSYJvff+HTvRf0c2wk=",
+        "lastModified": 1734904034,
+        "narHash": "sha256-n/9BeQSf8K1lboudFL1OiB2c8ZY6HoI9ROx54nF+5HY=",
         "owner": "svampkorg",
         "repo": "moody.nvim",
-        "rev": "47d37deaa0fb575f07c6675aff6c6c2754d8ed8e",
+        "rev": "263f5f89277f40932c1cd7aca010bd38256fda17",
         "type": "github"
       },
       "original": {
@@ -162,11 +162,11 @@
     "plugins-ts-error-translator-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1727112009,
-        "narHash": "sha256-8eUDQJYfhEsqv9G1QU96k5tTIcVa8oR8/SAoFN1XZ5I=",
+        "lastModified": 1731721659,
+        "narHash": "sha256-fi68jJVNTL2WlTehcl5Q8tijAeu2usjIsWXjcuixkCM=",
         "owner": "dmmulroy",
         "repo": "ts-error-translator.nvim",
-        "rev": "3bd23c4cfe4c2edc99278e01b75cdb2a26f03152",
+        "rev": "47e5ba89f71b9e6c72eaaaaa519dd59bd6897df4",
         "type": "github"
       },
       "original": {
