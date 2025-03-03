@@ -39,10 +39,10 @@
       flake = false;
     };
 
-    # "plugins-iswap-nvim" = {
-    #   url = "github:mizlan/iswap.nvim";
-    #   flake = false;
-    # };
+    "plugins-iswap-nvim" = {
+      url = "github:mizlan/iswap.nvim";
+      flake = false;
+    };
 
     "plugins-moody-nvim" = {
       url = "github:svampkorg/moody.nvim";
@@ -175,7 +175,7 @@
           ...
         }@packageDef:
         {
-          # to define and use a new category, simply add a new list to a set here, 
+          # to define and use a new category, simply add a new list to a set here,
           # and later, you will include categoryname = true; in the set you
           # provide when you build the package using this builder function.
           # see :help nixCats.flake.outputs.packageDefinitions for info on that section.
@@ -183,7 +183,7 @@
           # propagatedBuildInputs:
           # this section is for dependencies that should be available
           # at BUILD TIME for plugins. WILL NOT be available to PATH
-          # However, they WILL be available to the shell 
+          # However, they WILL be available to the shell
           # and neovim path when using nix develop
           propagatedBuildInputs = {
             general = with pkgs; [ ];
@@ -255,21 +255,66 @@
               noice-nvim
               nui-nvim
               mini-nvim
-              { name = "mini.icons"; plugin = mini-icons; }
-              { name = "catppuccin"; plugin = catppuccin-nvim; }
-              { name = "kitty-scrollback.nvim"; plugin = pkgs.neovimPlugins.kitty-scrollback-nvim; } # not in nixpkgs, probably requires some additional conf to make it work
-              { name = "ts-error-translator.nvim"; plugin = pkgs.neovimPlugins.ts-error-translator-nvim; }
-              { name = "twoslash-queries.nvim"; plugin = pkgs.neovimPlugins.twoslash-queries-nvim; }
-              { name = "here.term"; plugin = pkgs.neovimPlugins.here-term; }
-              { name = "iswap.nvim"; plugin = pkgs.neovimPlugins.iswap-nvim; }
-              { name = "moody.nvim"; plugin = pkgs.neovimPlugins.moody-nvim; }
-              { name = "helpview.nvim"; plugin = pkgs.neovimPlugins.helpview-nvim; }
-              { name = "diffview.nvim"; plugin = pkgs.neovimPlugins.diffview-nvim; }
-              { name = "messenger.nvim"; plugin = pkgs.neovimPlugins.messenger-nvim; }
-              { name = "Hypersonic.nvim"; plugin = pkgs.neovimPlugins.hypersonic-nvim; }
-              { name = "buffer-reopen.nvim"; plugin = pkgs.neovimPlugins.buffer-reopen-nvim; }
-              { name = "snipe.nvim"; plugin = pkgs.neovimPlugins.snipe-nvim; }
-              { name = "snipe-lsp.nvim"; plugin = pkgs.neovimPlugins.snipe-lsp-nvim; }
+              {
+                name = "mini.icons";
+                plugin = mini-icons;
+              }
+              {
+                name = "catppuccin";
+                plugin = catppuccin-nvim;
+              }
+              {
+                name = "kitty-scrollback.nvim";
+                plugin = pkgs.neovimPlugins.kitty-scrollback-nvim;
+              } # not in nixpkgs, probably requires some additional conf to make it work
+              {
+                name = "ts-error-translator.nvim";
+                plugin = pkgs.neovimPlugins.ts-error-translator-nvim;
+              }
+              {
+                name = "twoslash-queries.nvim";
+                plugin = pkgs.neovimPlugins.twoslash-queries-nvim;
+              }
+              {
+                name = "here.term";
+                plugin = pkgs.neovimPlugins.here-term;
+              }
+              {
+                name = "iswap.nvim";
+                plugin = pkgs.neovimPlugins.iswap-nvim;
+              }
+              {
+                name = "moody.nvim";
+                plugin = pkgs.neovimPlugins.moody-nvim;
+              }
+              {
+                name = "helpview.nvim";
+                plugin = pkgs.neovimPlugins.helpview-nvim;
+              }
+              {
+                name = "diffview.nvim";
+                plugin = pkgs.neovimPlugins.diffview-nvim;
+              }
+              {
+                name = "messenger.nvim";
+                plugin = pkgs.neovimPlugins.messenger-nvim;
+              }
+              {
+                name = "Hypersonic.nvim";
+                plugin = pkgs.neovimPlugins.hypersonic-nvim;
+              }
+              {
+                name = "buffer-reopen.nvim";
+                plugin = pkgs.neovimPlugins.buffer-reopen-nvim;
+              }
+              {
+                name = "snipe.nvim";
+                plugin = pkgs.neovimPlugins.snipe-nvim;
+              }
+              {
+                name = "snipe-lsp.nvim";
+                plugin = pkgs.neovimPlugins.snipe-lsp-nvim;
+              }
               lazygit-nvim
               smart-open-nvim
               telescope-fzy-native-nvim
