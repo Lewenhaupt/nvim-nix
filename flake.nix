@@ -23,7 +23,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     # nixpkgs.url = "github:khaneliman/nixpkgs/sqlite";
-    nixCats.url = "github:BirdeeHub/nixCats-nvim?dir=nix";
+    nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
     "plugins-ts-error-translator-nvim" = {
       url = "github:dmmulroy/ts-error-translator.nvim";
@@ -46,11 +46,6 @@
 
     "plugins-moody-nvim" = {
       url = "github:svampkorg/moody.nvim";
-      flake = false;
-    };
-
-    "plugins-sqlite-lua" = {
-      url = "github:kkharji/sqlite.lua";
       flake = false;
     };
 
@@ -259,8 +254,7 @@
               pkgs.neovimPlugins.iswap-nvim
               pkgs.neovimPlugins.moody-nvim
               lazygit-nvim
-              # sqlite-lua
-              pkgs.neovimPlugins.sqlite-lua
+              smart-open-nvim
               telescope-fzy-native-nvim
               telescope-fzf-native-nvim
               pkgs.neovimPlugins.yankbank-nvim
