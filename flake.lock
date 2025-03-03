@@ -2,16 +2,14 @@
   "nodes": {
     "nixCats": {
       "locked": {
-        "dir": "nix",
-        "lastModified": 1728657329,
-        "narHash": "sha256-eKLrDi2dqyuzTyW1PgBPJ+VC+mKgo5AyIEGLO4PATgs=",
+        "lastModified": 1740837766,
+        "narHash": "sha256-LKeBL3gjm+Fg2yVDKqB2gIiVnccv4TSUtt5NmQcasrk=",
         "owner": "BirdeeHub",
         "repo": "nixCats-nvim",
-        "rev": "63687d601963606934ba7c8262aa975fcd66600f",
+        "rev": "83264cfaf7d7438c52db28a95934d87ae45faaae",
         "type": "github"
       },
       "original": {
-        "dir": "nix",
         "owner": "BirdeeHub",
         "repo": "nixCats-nvim",
         "type": "github"
@@ -110,22 +108,6 @@
       "original": {
         "owner": "tomiis4",
         "repo": "hypersonic.nvim",
-        "type": "github"
-      }
-    },
-    "plugins-iswap-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716489980,
-        "narHash": "sha256-lAYHvz23f9nJ6rb0NIm+1aq0Vr0SwjPVitPuROtUS2A=",
-        "owner": "mizlan",
-        "repo": "iswap.nvim",
-        "rev": "e02cc91f2a8feb5c5a595767d208c54b6e3258ec",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mizlan",
-        "repo": "iswap.nvim",
         "type": "github"
       }
     },
@@ -234,7 +216,6 @@
         "plugins-helpview-nvim": "plugins-helpview-nvim",
         "plugins-here-term": "plugins-here-term",
         "plugins-hypersonic-nvim": "plugins-hypersonic-nvim",
-        "plugins-iswap-nvim": "plugins-iswap-nvim",
         "plugins-messenger-nvim": "plugins-messenger-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
