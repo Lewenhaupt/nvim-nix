@@ -127,6 +127,22 @@
         "type": "github"
       }
     },
+    "plugins-kitty-scrollback-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737397484,
+        "narHash": "sha256-0OPNHWR/qCbMKDQE6Pbt0Ew9QCm2ZSeZq4s9OL2rj04=",
+        "owner": "mikesmithgh",
+        "repo": "kitty-scrollback.nvim",
+        "rev": "fd9f83f3f1141ef65de73fbe962f6c606ef02da8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mikesmithgh",
+        "repo": "kitty-scrollback.nvim",
+        "type": "github"
+      }
+    },
     "plugins-messenger-nvim": {
       "flake": false,
       "locked": {
@@ -172,6 +188,22 @@
       "original": {
         "owner": "kungfusheep",
         "repo": "snipe-lsp.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-snipe-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740838551,
+        "narHash": "sha256-KbZuHll6VFcdSAC9fBLVfTnympKveDaiSoxZOt3GMJQ=",
+        "owner": "leath-dub",
+        "repo": "snipe.nvim",
+        "rev": "f43a1f0090de03d48ce5c55df630c1aa4d0b4291",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leath-dub",
+        "repo": "snipe.nvim",
         "type": "github"
       }
     },
@@ -233,9 +265,11 @@
         "plugins-here-term": "plugins-here-term",
         "plugins-hypersonic-nvim": "plugins-hypersonic-nvim",
         "plugins-iswap-nvim": "plugins-iswap-nvim",
+        "plugins-kitty-scrollback-nvim": "plugins-kitty-scrollback-nvim",
         "plugins-messenger-nvim": "plugins-messenger-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
+        "plugins-snipe-nvim": "plugins-snipe-nvim",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim",
         "plugins-yankbank-nvim": "plugins-yankbank-nvim"
