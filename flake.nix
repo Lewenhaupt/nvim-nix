@@ -39,10 +39,10 @@
       flake = false;
     };
 
-    "plugins-iswap-nvim" = {
-      url = "github:mizlan/iswap.nvim";
-      flake = false;
-    };
+    # "plugins-iswap-nvim" = {
+    #   url = "github:mizlan/iswap.nvim";
+    #   flake = false;
+    # };
 
     "plugins-moody-nvim" = {
       url = "github:svampkorg/moody.nvim";
@@ -251,7 +251,7 @@
               arrow-nvim
               noice-nvim
               nui-nvim
-              pkgs.neovimPlugins.iswap-nvim
+              # pkgs.neovimPlugins.iswap-nvim
               pkgs.neovimPlugins.moody-nvim
               lazygit-nvim
               smart-open-nvim
