@@ -64,6 +64,11 @@
       flake = false;
     };
 
+    "plugins-snipe-nvim" = {
+      url = "github:leath-dub/snipe.nvim";
+      flake = false;
+    };
+
     "plugins-diffview-nvim" = {
       url = "github:sindrets/diffview.nvim";
       flake = false;
@@ -80,6 +85,10 @@
     };
     "plugins-buffer-reopen-nvim" = {
       url = "github:iamyoki/buffer-reopen.nvim";
+      flake = false;
+    };
+    "plugins-kitty-scrollback-nvim" = {
+      url = "github:mikesmithgh/kitty-scrollback.nvim";
       flake = false;
     };
 
@@ -232,37 +241,41 @@
               cmp-path
               tokyonight-nvim
               todo-comments-nvim
-              mini-nvim
               nvim-treesitter.withAllGrammars
-              catppuccin-nvim
               neoscroll-nvim
               flash-nvim
               leap-nvim
-              # kitty-scrollback-nvim # not in nixpkgs, probably requires some additional conf to make it work
               smart-splits-nvim
               surround-nvim
               oil-nvim
               trouble-nvim
               typescript-tools-nvim
-              pkgs.neovimPlugins.ts-error-translator-nvim
-              pkgs.neovimPlugins.twoslash-queries-nvim
-              pkgs.neovimPlugins.here-term
               substitute-nvim
               arrow-nvim
               noice-nvim
               nui-nvim
-              # pkgs.neovimPlugins.iswap-nvim
-              pkgs.neovimPlugins.moody-nvim
+              mini-nvim
+              { name = "mini.icons"; plugin = mini-icons; }
+              { name = "catppuccin"; plugin = catppuccin-nvim; }
+              { name = "kitty-scrollback.nvim"; plugin = pkgs.neovimPlugins.kitty-scrollback-nvim; } # not in nixpkgs, probably requires some additional conf to make it work
+              { name = "ts-error-translator.nvim"; plugin = pkgs.neovimPlugins.ts-error-translator-nvim; }
+              { name = "twoslash-queries.nvim"; plugin = pkgs.neovimPlugins.twoslash-queries-nvim; }
+              { name = "here.term"; plugin = pkgs.neovimPlugins.here-term; }
+              { name = "iswap.nvim"; plugin = pkgs.neovimPlugins.iswap-nvim; }
+              { name = "moody.nvim"; plugin = pkgs.neovimPlugins.moody-nvim; }
+              { name = "helpview.nvim"; plugin = pkgs.neovimPlugins.helpview-nvim; }
+              { name = "diffview.nvim"; plugin = pkgs.neovimPlugins.diffview-nvim; }
+              { name = "messenger.nvim"; plugin = pkgs.neovimPlugins.messenger-nvim; }
+              { name = "Hypersonic.nvim"; plugin = pkgs.neovimPlugins.hypersonic-nvim; }
+              { name = "buffer-reopen.nvim"; plugin = pkgs.neovimPlugins.buffer-reopen-nvim; }
+              { name = "snipe.nvim"; plugin = pkgs.neovimPlugins.snipe-nvim; }
+              { name = "snipe-lsp.nvim"; plugin = pkgs.neovimPlugins.snipe-lsp-nvim; }
               lazygit-nvim
               smart-open-nvim
               telescope-fzy-native-nvim
               telescope-fzf-native-nvim
               pkgs.neovimPlugins.yankbank-nvim
               satellite-nvim
-              pkgs.neovimPlugins.helpview-nvim
-              pkgs.neovimPlugins.diffview-nvim
-              pkgs.neovimPlugins.hypersonic-nvim
-              pkgs.neovimPlugins.buffer-reopen-nvim
 
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
