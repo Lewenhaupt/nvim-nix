@@ -49,10 +49,10 @@
       flake = false;
     };
 
-    "plugins-sqlite-lua" = {
-      url = "github:kkharji/sqlite.lua";
-      flake = false;
-    };
+    # "plugins-sqlite-lua" = {
+    #   url = "github:kkharji/sqlite.lua";
+    #   flake = false;
+    # };
 
     "plugins-yankbank-nvim" = {
       url = "github:ptdewey/yankbank-nvim";
@@ -259,8 +259,9 @@
               pkgs.neovimPlugins.iswap-nvim
               pkgs.neovimPlugins.moody-nvim
               lazygit-nvim
-              # sqlite-lua
-              pkgs.neovimPlugins.sqlite-lua
+              sqlite-lua
+              smart-open-nvim
+              # pkgs.neovimPlugins.sqlite-lua
               telescope-fzy-native-nvim
               telescope-fzf-native-nvim
               pkgs.neovimPlugins.yankbank-nvim

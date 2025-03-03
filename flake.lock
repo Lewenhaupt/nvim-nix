@@ -19,11 +19,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1729980323,
-        "narHash": "sha256-eWPRZAlhf446bKSmzw6x7RWEE4IuZgAp8NW3eXZwRAY=",
+        "lastModified": 1740791350,
+        "narHash": "sha256-igS2Z4tVw5W/x3lCZeeadt0vcU9fxtetZ/RyrqsCRQ0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "86e78d3d2084ff87688da662cf78c2af085d8e73",
+        "rev": "199169a2135e6b864a888e89a2ace345703c025d",
         "type": "github"
       },
       "original": {
@@ -177,22 +177,6 @@
         "type": "github"
       }
     },
-    "plugins-sqlite-lua": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1713684746,
-        "narHash": "sha256-nbvc2hoOscOYoPPFUPnYdnXDwAPh5kiC2vI3lDP2QNo=",
-        "owner": "kkharji",
-        "repo": "sqlite.lua",
-        "rev": "d0ffd703b56d090d213b497ed4eb840495f14a11",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kkharji",
-        "repo": "sqlite.lua",
-        "type": "github"
-      }
-    },
     "plugins-ts-error-translator-nvim": {
       "flake": false,
       "locked": {
@@ -254,7 +238,6 @@
         "plugins-messenger-nvim": "plugins-messenger-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
-        "plugins-sqlite-lua": "plugins-sqlite-lua",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim",
         "plugins-yankbank-nvim": "plugins-yankbank-nvim"
