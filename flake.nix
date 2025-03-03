@@ -39,10 +39,10 @@
       flake = false;
     };
 
-    "plugins-iswap-nvim" = {
-      url = "github:mizlan/iswap.nvim";
-      flake = false;
-    };
+    # "plugins-iswap-nvim" = {
+    #   url = "github:mizlan/iswap.nvim";
+    #   flake = false;
+    # };
 
     "plugins-moody-nvim" = {
       url = "github:svampkorg/moody.nvim";
