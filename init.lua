@@ -698,13 +698,10 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         nix = { 'nixfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        javascript = { { 'prettierd', 'prettier', 'biome' } },
-        typescript = { { 'prettierd', 'prettier', 'biome' } },
-        javascriptreact = { { 'prettierd', 'prettier', 'biome' } },
-        typescriptreact = { { 'prettierd', 'prettier', 'biome' } },
+        javascript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
