@@ -210,6 +210,7 @@
             python = [
               ruff
               python3
+              pyright
             ];
             latex = [
               zathura
