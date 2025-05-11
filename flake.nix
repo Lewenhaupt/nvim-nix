@@ -207,6 +207,10 @@
               typescript
               nixfmt-rfc-style
             ];
+            python = [
+              ruff
+              python3
+            ];
             latex = [
               zathura
               texliveFull
@@ -334,7 +338,7 @@
               #   ]
               # ))
             ];
-            latext = [
+            latex = [
               vimtex
             ];
             kickstart-debug = [
@@ -441,6 +445,7 @@
               gitPlugins = true;
               customPlugins = true;
               test = true;
+              python = true;
 
               kickstart-autopairs = true;
               kickstart-neo-tree = true;

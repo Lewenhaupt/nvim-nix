@@ -697,7 +697,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         lua = { 'stylua' },
         nix = { 'nixfmt' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'ruff', 'isort', 'black', stop_after_first = true },
         javascript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
