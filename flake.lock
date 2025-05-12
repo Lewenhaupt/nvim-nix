@@ -31,6 +31,22 @@
         "type": "github"
       }
     },
+    "plugins-better-type-hover-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744832258,
+        "narHash": "sha256-z9s2veGEVCtB9dta2z3/3uZJog7zgLHZCaI26r5GHcs=",
+        "owner": "Sebastian-Nielsen",
+        "repo": "better-type-hover",
+        "rev": "c91a5406775f9379a1abc16a869935beba13cfc2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sebastian-Nielsen",
+        "repo": "better-type-hover",
+        "type": "github"
+      }
+    },
     "plugins-buffer-reopen-nvim": {
       "flake": false,
       "locked": {
@@ -275,6 +291,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-better-type-hover-nvim": "plugins-better-type-hover-nvim",
         "plugins-buffer-reopen-nvim": "plugins-buffer-reopen-nvim",
         "plugins-diffview-nvim": "plugins-diffview-nvim",
         "plugins-direnv-nvim": "plugins-direnv-nvim",

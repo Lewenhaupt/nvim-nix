@@ -97,6 +97,10 @@
       flake = false;
     };
 
+    "plugins-better-type-hover-nvim" = {
+      url = "github:Sebastian-Nielsen/better-type-hover";
+      flake = false;
+    };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -332,6 +336,10 @@
               {
                 name = "direnv.nvim";
                 plugin = pkgs.neovimPlugins.direnv-nvim;
+              }
+              {
+                name = "better-type-hover.nvim";
+                plugin = pkgs.neovimPlugins.better-type-hover-nvim;
               }
               lazygit-nvim
               smart-open-nvim
