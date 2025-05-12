@@ -63,6 +63,22 @@
         "type": "github"
       }
     },
+    "plugins-direnv-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745420568,
+        "narHash": "sha256-nAnZte8okf8V6gH2Egy/32o3W8xznbYhsYBPQ+9F470=",
+        "owner": "NotAShelf",
+        "repo": "direnv.nvim",
+        "rev": "a2f1264909463fd012b7b0b6bbfebc282c5d2834",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NotAShelf",
+        "repo": "direnv.nvim",
+        "type": "github"
+      }
+    },
     "plugins-helpview-nvim": {
       "flake": false,
       "locked": {
@@ -261,6 +277,7 @@
         "nixpkgs": "nixpkgs",
         "plugins-buffer-reopen-nvim": "plugins-buffer-reopen-nvim",
         "plugins-diffview-nvim": "plugins-diffview-nvim",
+        "plugins-direnv-nvim": "plugins-direnv-nvim",
         "plugins-helpview-nvim": "plugins-helpview-nvim",
         "plugins-here-term": "plugins-here-term",
         "plugins-hypersonic-nvim": "plugins-hypersonic-nvim",

@@ -92,6 +92,11 @@
       flake = false;
     };
 
+    "plugins-direnv-nvim" = {
+      url = "github:NotAShelf/direnv.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -323,6 +328,10 @@
               {
                 name = "snipe-lsp.nvim";
                 plugin = pkgs.neovimPlugins.snipe-lsp-nvim;
+              }
+              {
+                name = "direnv.nvim";
+                plugin = pkgs.neovimPlugins.direnv-nvim;
               }
               lazygit-nvim
               smart-open-nvim
