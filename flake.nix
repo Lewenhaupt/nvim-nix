@@ -265,6 +265,7 @@
               leap-nvim
               smart-splits-nvim
               surround-nvim
+              obsidian-nvim
               oil-nvim
               trouble-nvim
               typescript-tools-nvim
@@ -338,7 +339,7 @@
                 plugin = pkgs.neovimPlugins.direnv-nvim;
               }
               {
-                name = "better-type-hover.nvim";
+                name = "better-type-hover";
                 plugin = pkgs.neovimPlugins.better-type-hover-nvim;
               }
               lazygit-nvim
