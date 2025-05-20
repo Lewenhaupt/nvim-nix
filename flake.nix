@@ -101,6 +101,12 @@
       url = "github:Sebastian-Nielsen/better-type-hover";
       flake = false;
     };
+
+    "plugins-treewalker-nvim" = {
+      url = "github:aaronik/treewalker.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -341,6 +347,10 @@
               {
                 name = "better-type-hover";
                 plugin = pkgs.neovimPlugins.better-type-hover-nvim;
+              }
+              {
+                name = "treewalker.nvim";
+                plugin = pkgs.neovimPlugins.treewalker-nvim;
               }
               lazygit-nvim
               smart-open-nvim

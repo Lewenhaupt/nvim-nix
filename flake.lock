@@ -239,6 +239,22 @@
         "type": "github"
       }
     },
+    "plugins-treewalker-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747766042,
+        "narHash": "sha256-wtX9ysrkfI4JWgRYZT0YQD973hGjANhm0eBn9k0b364=",
+        "owner": "aaronik",
+        "repo": "treewalker.nvim",
+        "rev": "dbe096c40fa899487c51c56049cfaaa0e60b00f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aaronik",
+        "repo": "treewalker.nvim",
+        "type": "github"
+      }
+    },
     "plugins-ts-error-translator-nvim": {
       "flake": false,
       "locked": {
@@ -304,6 +320,7 @@
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
         "plugins-snipe-nvim": "plugins-snipe-nvim",
+        "plugins-treewalker-nvim": "plugins-treewalker-nvim",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim",
         "plugins-yankbank-nvim": "plugins-yankbank-nvim"
