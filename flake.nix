@@ -155,8 +155,7 @@
       # this allows you to use ${pkgs.system} whenever you want in those sections
       # without fear.
       inherit
-        (forEachSystem (
-          system:
+        (
           let
             # see :help nixCats.flake.outputs.overlays
             dependencyOverlays = # (import ./overlays inputs) ++
@@ -175,7 +174,7 @@
           {
             inherit dependencyOverlays;
           }
-        ))
+        )
         dependencyOverlays
         ;
       # see :help nixCats.flake.outputs.categories
@@ -218,7 +217,7 @@
               lua-language-server
               nixd
               stylua
-              nodejs-18_x
+              nodejs_20
               typescript
               nixfmt-rfc-style
             ];
@@ -432,7 +431,7 @@
           # in your lua config via
           # vim.g.python3_host_prog
           # or run from nvim terminal via :!<packagename>-python3
-          extraPython3Packages = {
+          python3.libraries = {
             test = (_: [ ]);
           };
           # populates $LUA_PATH and $LUA_CPATH
