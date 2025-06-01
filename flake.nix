@@ -107,6 +107,11 @@
       flake = false;
     };
 
+    "plugins-goose-nvim" = {
+      url = "github:azorng/goose.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -351,6 +356,11 @@
                 name = "treewalker.nvim";
                 plugin = pkgs.neovimPlugins.treewalker-nvim;
               }
+              {
+                name = "goose.nvim";
+                plugin = pkgs.neovimPlugins.goose-nvim;
+              }
+              render-markdown-nvim
               lazygit-nvim
               smart-open-nvim
               telescope-fzy-native-nvim

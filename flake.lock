@@ -95,6 +95,22 @@
         "type": "github"
       }
     },
+    "plugins-goose-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748279672,
+        "narHash": "sha256-liJsIvD9o8UZ/eaZ2mO0q9Vr2NRpln+xMIimH0HkNhI=",
+        "owner": "azorng",
+        "repo": "goose.nvim",
+        "rev": "04804ebb504c71df3a5f77a5e18cedb9070336ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "azorng",
+        "repo": "goose.nvim",
+        "type": "github"
+      }
+    },
     "plugins-helpview-nvim": {
       "flake": false,
       "locked": {
@@ -311,6 +327,7 @@
         "plugins-buffer-reopen-nvim": "plugins-buffer-reopen-nvim",
         "plugins-diffview-nvim": "plugins-diffview-nvim",
         "plugins-direnv-nvim": "plugins-direnv-nvim",
+        "plugins-goose-nvim": "plugins-goose-nvim",
         "plugins-helpview-nvim": "plugins-helpview-nvim",
         "plugins-here-term": "plugins-here-term",
         "plugins-hypersonic-nvim": "plugins-hypersonic-nvim",
