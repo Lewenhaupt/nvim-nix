@@ -709,6 +709,8 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         typescript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'jq' },
+        yaml = { 'yamlfmt' },
       },
     },
   },

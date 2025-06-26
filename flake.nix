@@ -225,6 +225,8 @@
               nodejs_20
               typescript
               nixfmt-rfc-style
+              jq
+              yamlfmt
             ];
             python = [
               ruff
