@@ -233,6 +233,11 @@
               python3
               pyright
             ];
+            rust = [
+              rustc
+              rustfmt
+              rustup
+            ];
             latex = [
               zathura
               texliveFull
@@ -486,6 +491,7 @@
               customPlugins = true;
               test = true;
               python = true;
+              rust = true;
 
               kickstart-autopairs = true;
               kickstart-neo-tree = true;
