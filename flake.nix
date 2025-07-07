@@ -237,6 +237,14 @@
               rustc
               rustfmt
               rustup
+              clippy
+            ];
+            go = [
+              go
+              golangci-lint
+              golangci-lint-langserver
+              gofumpt
+              gopls
             ];
             latex = [
               zathura
@@ -492,6 +500,7 @@
               test = true;
               python = true;
               rust = true;
+              go = true;
 
               kickstart-autopairs = true;
               kickstart-neo-tree = true;

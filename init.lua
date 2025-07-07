@@ -572,7 +572,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
       -- NOTE: nixCats: there is help in nixCats for lsps at `:h nixCats.LSPs` and also `:h nixCats.luaUtils`
       local servers = {}
       -- servers.clangd = {},
-      -- servers.gopls = {},
+      servers.gopls = {}
       servers.pyright = {}
       servers.rust_analyzer = {}
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -712,6 +712,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         json = { 'jq' },
         yaml = { 'yamlfmt' },
         rust = { 'rustfmt', lsp_format = 'fallback' },
+        go = { 'gofumpt' },
       },
     },
   },

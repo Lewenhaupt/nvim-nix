@@ -14,6 +14,8 @@ return {
         typescript = { 'biomejs', 'eslint_d' },
         typescriptreact = { 'biomejs', 'eslint_d' },
         json = { 'jsonlint' },
+        go = { 'golangcilint' },
+        rust = { 'clippy' },
       }
 
       -- instead set linters_by_ft like this:
