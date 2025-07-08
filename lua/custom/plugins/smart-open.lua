@@ -9,7 +9,7 @@ return {
       '<leader><leader>',
       mode = { 'n' },
       function()
-        require('telescope').extensions.smart_open.smart_open()
+        require('telescope').extensions.smart_open.smart_open { cwd_only = true }
       end,
       desc = 'Find Smart Files',
     },
