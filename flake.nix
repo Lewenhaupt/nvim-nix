@@ -383,6 +383,17 @@
               pkgs.neovimPlugins.yankbank-nvim
               satellite-nvim
 
+              # neotest
+              pkgs.vimPlugins.neotest
+              pkgs.vimPlugins.nvim-nio
+              pkgs.vimPlugins.plenary-nvim
+              pkgs.vimPlugins.neotest-golang
+              pkgs.vimPlugins.neotest-plenary
+              pkgs.vimPlugins.FixCursorHold-nvim
+              pkgs.vimPlugins.neotest-vitest
+              pkgs.vimPlugins.neotest-python
+              rustaceanvim
+
               # This is for if you only want some of the grammars
               # (nvim-treesitter.withPlugins (
               #   plugins: with plugins; [
@@ -399,6 +410,7 @@
               nvim-dap-ui
               nvim-dap-go
               nvim-nio
+              pkgs.vimPlugins.nvim-dap-virtual-text
             ];
             kickstart-indent_line = [ indent-blankline-nvim ];
             kickstart-lint = [ nvim-lint ];
@@ -439,6 +451,9 @@
             };
             general = {
               LIBSQLITE = ''"${pkgs.sqlite.out}/lib/libsqlite3.so"'';
+              # To allow debugging go
+              CGO_CFLAGS = "-Wno-error=cpp";
+              CGO_ENABLED = "1";
             };
           };
 
