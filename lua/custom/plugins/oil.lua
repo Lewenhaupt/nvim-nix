@@ -8,6 +8,7 @@ return {
       show_hidden = true,
     },
   },
+  cond = require('utils.init').nocode,
   keys = {
     {
       '<leader>å',
