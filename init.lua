@@ -577,6 +577,10 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         servers.pyright = {}
         servers.rust_analyzer = {}
       end
+
+      servers.eslint = {}
+      servers.biome = {}
+
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
       -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -706,11 +710,34 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
             return { 'isort', 'black', stop_after_first = true }
           end
         end,
-        -- python = { 'ruff_format', 'isort', 'black', stop_after_first = true },
-        javascript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
-        typescript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
-        javascriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
-        typescriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+        javascript = function(bufnr)
+          if require('conform').get_formatter_info('biome', bufnr).available then
+            return { 'biome' }
+          else
+            return { 'prettierd', 'prettier', stop_after_first = true }
+          end
+        end,
+        typescript = function(bufnr)
+          if require('conform').get_formatter_info('biome', bufnr).available then
+            return { 'biome' }
+          else
+            return { 'prettierd', 'prettier', stop_after_first = true }
+          end
+        end,
+        javascriptreact = function(bufnr)
+          if require('conform').get_formatter_info('biome', bufnr).available then
+            return { 'biome' }
+          else
+            return { 'prettierd', 'prettier', stop_after_first = true }
+          end
+        end,
+        typescriptreact = function(bufnr)
+          if require('conform').get_formatter_info('biome', bufnr).available then
+            return { 'biome' }
+          else
+            return { 'prettierd', 'prettier', stop_after_first = true }
+          end
+        end,
         json = { 'jq' },
         yaml = { 'yamlfmt' },
         rust = { 'rustfmt', lsp_format = 'fallback' },

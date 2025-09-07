@@ -254,6 +254,7 @@
             kickstart-lint = [
               markdownlint-cli
               biome
+              vscode-langservers-extracted
               eslint
               eslint_d
               prettierd
