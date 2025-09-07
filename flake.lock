@@ -31,6 +31,22 @@
         "type": "github"
       }
     },
+    "plugins-amazonq-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756906376,
+        "narHash": "sha256-EoykpuPlck3JCY1dkkt0SBb7vj9miHVVIGi5UboB7lU=",
+        "owner": "awslabs",
+        "repo": "amazonq.nvim",
+        "rev": "9f6d2278042f282feeb74a83a32f554a5ad0ae95",
+        "type": "github"
+      },
+      "original": {
+        "owner": "awslabs",
+        "repo": "amazonq.nvim",
+        "type": "github"
+      }
+    },
     "plugins-better-type-hover-nvim": {
       "flake": false,
       "locked": {
@@ -323,6 +339,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-amazonq-nvim": "plugins-amazonq-nvim",
         "plugins-better-type-hover-nvim": "plugins-better-type-hover-nvim",
         "plugins-buffer-reopen-nvim": "plugins-buffer-reopen-nvim",
         "plugins-diffview-nvim": "plugins-diffview-nvim",

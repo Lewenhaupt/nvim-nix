@@ -1,5 +1,6 @@
 return {
   'azorng/goose.nvim',
+  enabled = require('nixCatsUtils').enableForCategory 'ai',
   config = function()
     require('goose').setup {}
   end,

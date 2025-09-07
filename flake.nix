@@ -112,6 +112,11 @@
       flake = false;
     };
 
+    "plugins-amazonq-nvim" = {
+      url = "github:awslabs/amazonq.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -372,10 +377,6 @@
                 name = "treewalker.nvim";
                 plugin = pkgs.neovimPlugins.treewalker-nvim;
               }
-              {
-                name = "goose.nvim";
-                plugin = pkgs.neovimPlugins.goose-nvim;
-              }
               render-markdown-nvim
               lazygit-nvim
               smart-open-nvim
@@ -402,6 +403,16 @@
               #     lua
               #   ]
               # ))
+            ];
+            ai = [
+              {
+                name = "amazonq.nvim";
+                plugin = pkgs.neovimPlugins.amazonq-nvim;
+              }
+              {
+                name = "goose.nvim";
+                plugin = pkgs.neovimPlugins.goose-nvim;
+              }
             ];
             latex = [
               vimtex
@@ -517,6 +528,8 @@
               python = true;
               rust = true;
               go = true;
+
+              ai = true;
 
               kickstart-autopairs = true;
               kickstart-neo-tree = true;
