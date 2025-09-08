@@ -4,6 +4,17 @@ return {
     'mfussenegger/nvim-lint',
     -- NOTE: nixCats: return true only if category is enabled, else false
     enabled = require('nixCatsUtils').enableForCategory 'kickstart-lint',
+    dependencies = {
+      {
+        'rshkarin/mason-nvim-lint',
+        -- NOTE: nixCats: use lazyAdd to only enable mason if nix wasnt involved.
+        -- because we will be using nix to download things instead.
+        enabled = require('nixCatsUtils').lazyAdd(true, false),
+        config = function()
+          require('mason-nvim-lint').setup()
+        end,
+      },
+    },
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
