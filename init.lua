@@ -738,7 +738,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
             return { 'prettierd', 'prettier', stop_after_first = true }
           end
         end,
-        json = { 'jq' },
+        json = { 'prettierd', 'prettier', 'jq', stop_after_first = true, lsp_format = 'fallback' },
         yaml = { 'yamlfmt' },
         rust = { 'rustfmt', lsp_format = 'fallback' },
         go = { 'gofumpt' },
