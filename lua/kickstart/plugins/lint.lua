@@ -25,6 +25,7 @@ return {
         typescript = { 'biomejs', 'eslint_d' },
         typescriptreact = { 'biomejs', 'eslint_d' },
         json = { 'jsonlint' },
+        jsonc = { 'jsonlint' },
         go = { 'golangcilint' },
         rust = { 'clippy' },
       },
