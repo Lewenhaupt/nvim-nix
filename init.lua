@@ -228,6 +228,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.filetype.add {
+  extension = {
+    ['http'] = 'http',
+  },
+}
+
 -- NOTE: nixCats: this is where we define some arguments for the lazy wrapper.
 local pluginList = nil
 local nixLazyPath = nil
@@ -570,7 +576,9 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       -- NOTE: nixCats: there is help in nixCats for lsps at `:h nixCats.LSPs` and also `:h nixCats.luaUtils`
-      local servers = {}
+      local servers = {
+        -- 'kulala_ls',
+      }
       -- servers.clangd = {},
       if require('utils.init').nowork() then
         servers.gopls = {}
@@ -687,6 +695,11 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         biome = {
           require_cwd = true,
         },
+        kulala = {
+          command = 'kulala-fmt',
+          args = { 'format', '$FILENAME' },
+          stdin = false,
+        },
       },
       notify_on_error = false,
       format_on_save = function(bufnr)
@@ -702,6 +715,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
       formatters_by_ft = {
         lua = { 'stylua' },
         nix = { 'nixfmt' },
+        http = { 'kulala' },
         -- Conform can also run multiple formatters sequentially
         python = function(bufnr)
           if require('conform').get_formatter_info('ruff_format', bufnr).available then

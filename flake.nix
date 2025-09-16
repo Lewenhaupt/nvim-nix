@@ -232,6 +232,7 @@
               nixfmt-rfc-style
               jq
               yamlfmt
+              kulala-fmt
             ];
             python = [
               ruff
@@ -268,175 +269,191 @@
           };
 
           # This is for plugins that will load at startup without using packadd:
-          startupPlugins = with pkgs.vimPlugins; {
-            general = [
-              vim-sleuth
-              lazy-nvim
-              comment-nvim
-              gitsigns-nvim
-              which-key-nvim
-              telescope-nvim
-              telescope-ui-select-nvim
-              nvim-web-devicons
-              plenary-nvim
-              nvim-lspconfig
-              lazydev-nvim
-              fidget-nvim
-              conform-nvim
-              nvim-cmp
-              luasnip
-              cmp_luasnip
-              cmp-nvim-lsp
-              cmp-path
-              tokyonight-nvim
-              todo-comments-nvim
-              nvim-treesitter.withAllGrammars
-              neoscroll-nvim
-              flash-nvim
-              leap-nvim
-              smart-splits-nvim
-              surround-nvim
-              obsidian-nvim
-              oil-nvim
-              trouble-nvim
-              typescript-tools-nvim
-              substitute-nvim
-              arrow-nvim
-              noice-nvim
-              nui-nvim
-              mini-nvim
-              {
-                name = "mini.icons";
-                plugin = mini-icons;
-              }
-              {
-                name = "catppuccin";
-                plugin = catppuccin-nvim;
-              }
-              {
-                name = "kitty-scrollback.nvim";
-                plugin = pkgs.neovimPlugins.kitty-scrollback-nvim;
-              } # not in nixpkgs, probably requires some additional conf to make it work
-              {
-                name = "ts-error-translator.nvim";
-                plugin = pkgs.neovimPlugins.ts-error-translator-nvim;
-              }
-              {
-                name = "twoslash-queries.nvim";
-                plugin = pkgs.neovimPlugins.twoslash-queries-nvim;
-              }
-              {
-                name = "here.term";
-                plugin = pkgs.neovimPlugins.here-term;
-              }
-              {
-                name = "iswap.nvim";
-                plugin = pkgs.neovimPlugins.iswap-nvim;
-              }
-              {
-                name = "moody.nvim";
-                plugin = pkgs.neovimPlugins.moody-nvim;
-              }
-              {
-                name = "helpview.nvim";
-                plugin = pkgs.neovimPlugins.helpview-nvim;
-              }
-              {
-                name = "diffview.nvim";
-                plugin = pkgs.neovimPlugins.diffview-nvim;
-              }
-              {
-                name = "messenger.nvim";
-                plugin = pkgs.neovimPlugins.messenger-nvim;
-              }
-              {
-                name = "Hypersonic.nvim";
-                plugin = pkgs.neovimPlugins.hypersonic-nvim;
-              }
-              {
-                name = "buffer-reopen.nvim";
-                plugin = pkgs.neovimPlugins.buffer-reopen-nvim;
-              }
-              {
-                name = "snipe.nvim";
-                plugin = pkgs.neovimPlugins.snipe-nvim;
-              }
-              {
-                name = "snipe-lsp.nvim";
-                plugin = pkgs.neovimPlugins.snipe-lsp-nvim;
-              }
-              {
-                name = "direnv.nvim";
-                plugin = pkgs.neovimPlugins.direnv-nvim;
-              }
-              {
-                name = "better-type-hover";
-                plugin = pkgs.neovimPlugins.better-type-hover-nvim;
-              }
-              {
-                name = "treewalker.nvim";
-                plugin = pkgs.neovimPlugins.treewalker-nvim;
-              }
-              render-markdown-nvim
-              lazygit-nvim
-              smart-open-nvim
-              telescope-fzy-native-nvim
-              telescope-fzf-native-nvim
-              pkgs.neovimPlugins.yankbank-nvim
-              satellite-nvim
+          startupPlugins =
+            with pkgs.vimPlugins;
+            let
+              tree-sitter-kulala-http-grammar = pkgs.tree-sitter.buildGrammar {
+                language = "kulala_http";
+                version = pkgs.vimPlugins.kulala-nvim.version;
+                src = pkgs.vimPlugins.kulala-nvim;
+                location = "lua/tree-sitter";
+              };
+              all-grammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (
+                plugins: pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [ tree-sitter-kulala-http-grammar ]
+              );
+            in
+            {
+              general = [
+                vim-sleuth
+                lazy-nvim
+                comment-nvim
+                gitsigns-nvim
+                which-key-nvim
+                telescope-nvim
+                telescope-ui-select-nvim
+                nvim-web-devicons
+                plenary-nvim
+                nvim-lspconfig
+                lazydev-nvim
+                fidget-nvim
+                conform-nvim
+                nvim-cmp
+                luasnip
+                cmp_luasnip
+                cmp-nvim-lsp
+                cmp-path
+                tokyonight-nvim
+                todo-comments-nvim
+                neoscroll-nvim
+                flash-nvim
+                leap-nvim
+                smart-splits-nvim
+                surround-nvim
+                obsidian-nvim
+                oil-nvim
+                trouble-nvim
+                typescript-tools-nvim
+                substitute-nvim
+                arrow-nvim
+                noice-nvim
+                nui-nvim
+                mini-nvim
+                all-grammars
 
-              # neotest
-              pkgs.vimPlugins.neotest
-              pkgs.vimPlugins.nvim-nio
-              pkgs.vimPlugins.plenary-nvim
-              pkgs.vimPlugins.neotest-golang
-              pkgs.vimPlugins.neotest-plenary
-              pkgs.vimPlugins.FixCursorHold-nvim
-              pkgs.vimPlugins.neotest-vitest
-              pkgs.vimPlugins.neotest-python
-              rustaceanvim
+                {
+                  name = "mini.icons";
+                  plugin = mini-icons;
+                }
+                {
+                  name = "catppuccin";
+                  plugin = catppuccin-nvim;
+                }
+                {
+                  name = "kitty-scrollback.nvim";
+                  plugin = pkgs.neovimPlugins.kitty-scrollback-nvim;
+                } # not in nixpkgs, probably requires some additional conf to make it work
+                {
+                  name = "ts-error-translator.nvim";
+                  plugin = pkgs.neovimPlugins.ts-error-translator-nvim;
+                }
+                {
+                  name = "twoslash-queries.nvim";
+                  plugin = pkgs.neovimPlugins.twoslash-queries-nvim;
+                }
+                {
+                  name = "here.term";
+                  plugin = pkgs.neovimPlugins.here-term;
+                }
+                {
+                  name = "iswap.nvim";
+                  plugin = pkgs.neovimPlugins.iswap-nvim;
+                }
+                {
+                  name = "moody.nvim";
+                  plugin = pkgs.neovimPlugins.moody-nvim;
+                }
+                {
+                  name = "helpview.nvim";
+                  plugin = pkgs.neovimPlugins.helpview-nvim;
+                }
+                {
+                  name = "diffview.nvim";
+                  plugin = pkgs.neovimPlugins.diffview-nvim;
+                }
+                {
+                  name = "messenger.nvim";
+                  plugin = pkgs.neovimPlugins.messenger-nvim;
+                }
+                {
+                  name = "Hypersonic.nvim";
+                  plugin = pkgs.neovimPlugins.hypersonic-nvim;
+                }
+                {
+                  name = "buffer-reopen.nvim";
+                  plugin = pkgs.neovimPlugins.buffer-reopen-nvim;
+                }
+                {
+                  name = "snipe.nvim";
+                  plugin = pkgs.neovimPlugins.snipe-nvim;
+                }
+                {
+                  name = "snipe-lsp.nvim";
+                  plugin = pkgs.neovimPlugins.snipe-lsp-nvim;
+                }
+                {
+                  name = "direnv.nvim";
+                  plugin = pkgs.neovimPlugins.direnv-nvim;
+                }
+                {
+                  name = "better-type-hover";
+                  plugin = pkgs.neovimPlugins.better-type-hover-nvim;
+                }
+                {
+                  name = "treewalker.nvim";
+                  plugin = pkgs.neovimPlugins.treewalker-nvim;
+                }
 
-              # This is for if you only want some of the grammars
-              # (nvim-treesitter.withPlugins (
-              #   plugins: with plugins; [
-              #     nix
-              #     lua
-              #   ]
-              # ))
-            ];
-            ai = [
-              {
-                name = "amazonq.nvim";
-                plugin = pkgs.neovimPlugins.amazonq-nvim;
-              }
-              {
-                name = "goose.nvim";
-                plugin = pkgs.neovimPlugins.goose-nvim;
-              }
-            ];
-            latex = [
-              vimtex
-            ];
-            kickstart-debug = [
-              nvim-dap
-              nvim-dap-ui
-              nvim-dap-go
-              nvim-nio
-              pkgs.vimPlugins.nvim-dap-virtual-text
-            ];
-            kickstart-indent_line = [ indent-blankline-nvim ];
-            kickstart-lint = [ nvim-lint ];
-            kickstart-autopairs = [ nvim-autopairs ];
-            kickstart-neo-tree = [
-              neo-tree-nvim
-              nui-nvim
-              # nixCats will filter out duplicate packages
-              # so you can put dependencies with stuff even if they're
-              # also somewhere else
-              nvim-web-devicons
-              plenary-nvim
-            ];
-          };
+                kulala-nvim
+                render-markdown-nvim
+                lazygit-nvim
+                smart-open-nvim
+                telescope-fzy-native-nvim
+                telescope-fzf-native-nvim
+                pkgs.neovimPlugins.yankbank-nvim
+                satellite-nvim
+
+                # neotest
+                pkgs.vimPlugins.neotest
+                pkgs.vimPlugins.nvim-nio
+                pkgs.vimPlugins.plenary-nvim
+                pkgs.vimPlugins.neotest-golang
+                pkgs.vimPlugins.neotest-plenary
+                pkgs.vimPlugins.FixCursorHold-nvim
+                pkgs.vimPlugins.neotest-vitest
+                pkgs.vimPlugins.neotest-python
+                rustaceanvim
+
+                # This is for if you only want some of the grammars
+                # (nvim-treesitter.withPlugins (
+                #   plugins: with plugins; [
+                #     nix
+                #     lua
+                #   ]
+                # ))
+              ];
+              ai = [
+                {
+                  name = "amazonq.nvim";
+                  plugin = pkgs.neovimPlugins.amazonq-nvim;
+                }
+                {
+                  name = "goose.nvim";
+                  plugin = pkgs.neovimPlugins.goose-nvim;
+                }
+              ];
+              latex = [
+                vimtex
+              ];
+              kickstart-debug = [
+                nvim-dap
+                nvim-dap-ui
+                nvim-dap-go
+                nvim-nio
+                pkgs.vimPlugins.nvim-dap-virtual-text
+              ];
+              kickstart-indent_line = [ indent-blankline-nvim ];
+              kickstart-lint = [ nvim-lint ];
+              kickstart-autopairs = [ nvim-autopairs ];
+              kickstart-neo-tree = [
+                neo-tree-nvim
+                nui-nvim
+                # nixCats will filter out duplicate packages
+                # so you can put dependencies with stuff even if they're
+                # also somewhere else
+                nvim-web-devicons
+                plenary-nvim
+              ];
+            };
 
           # not loaded automatically at startup.
           # use with packadd and an autocommand in config to achieve lazy loading
