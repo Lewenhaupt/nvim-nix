@@ -19,6 +19,62 @@ return {
       end,
       desc = 'Debug nearest test',
     },
+    {
+      '<leader>ts',
+      function()
+        vim.cmd [[Neotest summary]]
+      end,
+      desc = 'Neotest toggle summary',
+    },
+    {
+      '<leader>tp',
+      function()
+        require('neotest').output_panel.toggle()
+      end,
+      desc = 'Neotest output_panel toggle',
+    },
+    {
+      '<leader>tt',
+      function()
+        vim.cmd [[Neotest run]]
+      end,
+      desc = 'Neotest nearest',
+    },
+    {
+      '<leader>tf',
+      function()
+        require('neotest').run.run(vim.fn.expand '%')
+      end,
+      desc = 'Neotest file',
+    },
+    {
+      '<leader>ta',
+      function()
+        vim.cmd [[Neotest attach]]
+      end,
+      desc = 'Neotest attach',
+    },
+    {
+      '<leader>tww',
+      function()
+        require('neotest').watch.watch {}
+      end,
+      desc = 'Run Watch file',
+    },
+    {
+      '<leader>twr',
+      function()
+        require('neotest').run.run { vitestCommand = 'vitest --watch' }
+      end,
+      desc = 'Run Watch',
+    },
+    {
+      '<leader>twf',
+      function()
+        require('neotest').run.run { vim.fn.expand '%', vitestCommand = 'vitest --watch' }
+      end,
+      desc = 'Run Watch File',
+    },
   },
   config = function()
     require('neotest').setup {
