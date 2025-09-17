@@ -401,6 +401,8 @@
                 telescope-fzf-native-nvim
                 pkgs.neovimPlugins.yankbank-nvim
                 satellite-nvim
+                nvim-treesitter-textobjects
+                nvim-treesitter-context
 
                 # neotest
                 pkgs.vimPlugins.neotest
