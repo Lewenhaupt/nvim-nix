@@ -7,4 +7,6 @@ return {
     vim.keymap.set('x', 's', require('substitute').visual, { noremap = true })
   end,
   opts = {},
+  -- Disabling this in favor of using visual selection for "replace-pasting"
+  enabled = false,
 }
