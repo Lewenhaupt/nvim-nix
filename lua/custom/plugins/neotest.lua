@@ -89,7 +89,33 @@ return {
           --   CGO_ENABLED = '1',
           -- },
         },
-        require 'neotest-vitest',
+        require 'neotest-vitest' {
+          ---Custom criteria for a file path to determine if it is a vitest test file.
+          ---@async
+          ---@param file_path string Path of the potential vitest test file
+          ---@return boolean
+          is_test_file = function(file_path)
+            if file_path == nil then
+              return false
+            end
+            local is_test_file = false
+
+            if string.match(file_path, '__tests__') then
+              is_test_file = true
+            end
+
+            for _, x in ipairs { 'e2e', 'spec', 'test', 'int', 'bench' } do
+              for _, ext in ipairs { 'js', 'jsx', 'ts', 'tsx' } do
+                if string.match(file_path, '%.' .. x .. '%.' .. ext .. '$') then
+                  is_test_file = true
+                  goto matched_pattern
+                end
+              end
+            end
+            ::matched_pattern::
+            return is_test_file
+          end,
+        },
         require 'rustaceanvim.neotest',
       },
     }
