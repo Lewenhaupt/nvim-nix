@@ -447,7 +447,7 @@
               ];
               kickstart-indent_line = [ indent-blankline-nvim ];
               kickstart-lint = [ nvim-lint ];
-              # kickstart-autopairs = [ nvim-autopairs ];
+              kickstart-autopairs = [ nvim-autopairs ];
               kickstart-neo-tree = [
                 neo-tree-nvim
                 nui-nvim
