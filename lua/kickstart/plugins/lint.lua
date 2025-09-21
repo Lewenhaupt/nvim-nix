@@ -112,9 +112,29 @@ return {
           return linter and not (type(linter) == 'table' and linter.condition and not linter.condition(ctx))
         end, names)
 
+        local lint_opts = {}
+
+        local clients = vim.lsp.get_clients { bufnr = 0 }
+        local key, client = next(clients)
+        while key do
+          if client.workspace_folders then
+            for _, dir in pairs(client.workspace_folders) do
+              if vim.fs.relpath(dir.name, vim.api.nvim_buf_get_name(0)) then
+                lint_opts.cwd = dir.name
+              end
+            end
+          elseif client.root_dir then
+            lint_opts.cwd = client.root_dir
+          end
+          if lint_opts.cwd then
+            break
+          end
+          key, client = next(clients, key)
+        end
+
         -- Run linters.
         if #names > 0 then
-          lint.try_lint(names)
+          lint.try_lint(names, lint_opts)
         end
       end
 
