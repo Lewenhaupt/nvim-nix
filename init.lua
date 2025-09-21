@@ -231,8 +231,32 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.filetype.add {
   extension = {
     ['http'] = 'http',
+    ['kbd'] = 'kbd',
   },
 }
+
+vim.api.nvim_create_augroup('setIndent', { clear = true })
+vim.api.nvim_create_autocmd('Filetype', {
+  group = 'setIndent',
+  pattern = {
+    'xml',
+    'html',
+    'xhtml',
+    'css',
+    'scss',
+    'javascript',
+    'typescript',
+    'yaml',
+    'lua',
+    'jsx',
+    'tsx',
+    'typescriptreact',
+    'javascriptreact',
+    'kbd',
+    'json',
+  },
+  command = 'setlocal shiftwidth=4 smarttab expandtab tabstop=8 softtabstop=0',
+})
 
 -- NOTE: nixCats: this is where we define some arguments for the lazy wrapper.
 local pluginList = nil
