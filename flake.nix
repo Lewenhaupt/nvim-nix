@@ -117,6 +117,11 @@
       flake = false;
     };
 
+    "kanata-tree-sitter" = {
+      url = "github:postsolar/tree-sitter-kanata";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -278,8 +283,19 @@
                 src = pkgs.vimPlugins.kulala-nvim;
                 location = "lua/tree-sitter";
               };
+              tree-sitter-kanata-grammar = pkgs.tree-sitter.buildGrammar {
+                language = "kanata";
+                version = inputs.kanata-tree-sitter.shortRev;
+                src = inputs.kanata-tree-sitter;
+                filetype = "kbd";
+              };
               all-grammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (
-                plugins: pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [ tree-sitter-kulala-http-grammar ]
+                plugins:
+                pkgs.vimPlugins.nvim-treesitter.allGrammars
+                ++ [
+                  tree-sitter-kulala-http-grammar
+                  tree-sitter-kanata-grammar
+                ]
               );
             in
             {

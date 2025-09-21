@@ -231,8 +231,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.filetype.add {
   extension = {
     ['http'] = 'http',
+    ['kbd'] = 'kbd',
   },
 }
+
+vim.treesitter.language.register('kanata', 'kbd')
 
 -- NOTE: nixCats: this is where we define some arguments for the lazy wrapper.
 local pluginList = nil
