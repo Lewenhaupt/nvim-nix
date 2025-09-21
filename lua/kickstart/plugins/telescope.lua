@@ -68,7 +68,7 @@ return {
       -- },
       -- pickers = {}
       defaults = {
-        file_ignore_patterns = { 'node_modules', 'dist', 'cdk.out' },
+        -- file_ignore_patterns = { 'node_modules', 'dist', 'cdk.out' },
         mappings = {
           i = {
             ['<esc>'] = actions.close,
