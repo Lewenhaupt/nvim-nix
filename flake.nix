@@ -117,6 +117,11 @@
       flake = false;
     };
 
+    "plugins-template-string-nvim" = {
+      url = "github:axelvc/template-string.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -394,7 +399,10 @@
                   name = "treewalker.nvim";
                   plugin = pkgs.neovimPlugins.treewalker-nvim;
                 }
-
+                {
+                  name = "template-string.nvim";
+                  plugin = pkgs.neovimPlugins.template-string-nvim;
+                }
                 kulala-nvim
                 render-markdown-nvim
                 lazygit-nvim

@@ -3,13 +3,13 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  {
-    'jaimecgomezz/here.term',
-    opts = {
-      mappings = {
-        toggle = '<C-,>',
-        kill = '<C-S-,>',
-      },
-    },
-  },
+  -- {
+  --   'jaimecgomezz/here.term',
+  --   opts = {
+  --     mappings = {
+  --       toggle = '<C-,>',
+  --       kill = '<C-S-,>',
+  --     },
+  --   },
+  -- },
 }

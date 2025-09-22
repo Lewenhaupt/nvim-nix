@@ -271,6 +271,22 @@
         "type": "github"
       }
     },
+    "plugins-template-string-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736201255,
+        "narHash": "sha256-LkbATjFFUHffi4vVEG2Kms9vlvJeJX+x1oEdCbN39BY=",
+        "owner": "axelvc",
+        "repo": "template-string.nvim",
+        "rev": "da5f326b65fb74fd068aa1d8b55461b64c8fb23b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "axelvc",
+        "repo": "template-string.nvim",
+        "type": "github"
+      }
+    },
     "plugins-treewalker-nvim": {
       "flake": false,
       "locked": {
@@ -354,6 +370,7 @@
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
         "plugins-snipe-nvim": "plugins-snipe-nvim",
+        "plugins-template-string-nvim": "plugins-template-string-nvim",
         "plugins-treewalker-nvim": "plugins-treewalker-nvim",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim",
