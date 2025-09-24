@@ -122,6 +122,10 @@
       flake = false;
     };
 
+    "plugins-nvim-oxlint" = {
+      url = "github:soulsam480/nvim-oxlint";
+      flake = false;
+    };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -403,6 +407,11 @@
                   name = "template-string.nvim";
                   plugin = pkgs.neovimPlugins.template-string-nvim;
                 }
+                {
+                  name = "nvim-oxlint";
+                  plugin = pkgs.neovimPlugins.nvim-oxlint;
+                }
+
                 kulala-nvim
                 render-markdown-nvim
                 lazygit-nvim

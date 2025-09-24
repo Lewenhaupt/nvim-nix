@@ -239,6 +239,22 @@
         "type": "github"
       }
     },
+    "plugins-nvim-oxlint": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733412472,
+        "narHash": "sha256-dg1Dqga6bY0Q70R1DzZFxlv++aAH263IFIm/H1KfxrA=",
+        "owner": "soulsam480",
+        "repo": "nvim-oxlint",
+        "rev": "0681ffb3fa1a4916a5335f009e5c0ebf0a448d81",
+        "type": "github"
+      },
+      "original": {
+        "owner": "soulsam480",
+        "repo": "nvim-oxlint",
+        "type": "github"
+      }
+    },
     "plugins-snipe-lsp-nvim": {
       "flake": false,
       "locked": {
@@ -368,6 +384,7 @@
         "plugins-kitty-scrollback-nvim": "plugins-kitty-scrollback-nvim",
         "plugins-messenger-nvim": "plugins-messenger-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
+        "plugins-nvim-oxlint": "plugins-nvim-oxlint",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
         "plugins-snipe-nvim": "plugins-snipe-nvim",
         "plugins-template-string-nvim": "plugins-template-string-nvim",
