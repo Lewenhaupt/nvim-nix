@@ -48,6 +48,7 @@ return {
       -- possible values: ("off"|"all"|"implementations_only"|"references_only")
       code_lens = 'references_only',
 
+      expose_as_code_action = 'all',
       tsserver_file_preferences = {
         includeInlayParameterNameHints = 'literals',
         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
