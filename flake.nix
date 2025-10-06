@@ -124,7 +124,6 @@
 
     "plugins-nvim-oxlint" = {
       url = "github:soulsam480/nvim-oxlint";
-      flake = false;
     };
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
