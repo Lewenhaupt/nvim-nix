@@ -255,6 +255,22 @@
         "type": "github"
       }
     },
+    "plugins-snacks-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762192365,
+        "narHash": "sha256-Uf5OyUfqDX1Igy2qEfIhS5AW/FKmzFmc9BeeStW/INc=",
+        "owner": "folke",
+        "repo": "snacks.nvim",
+        "rev": "2e2cf50514a70bbe78cac998e88e170e80fcfaa5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "snacks.nvim",
+        "type": "github"
+      }
+    },
     "plugins-snipe-lsp-nvim": {
       "flake": false,
       "locked": {
@@ -385,6 +401,7 @@
         "plugins-messenger-nvim": "plugins-messenger-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-nvim-oxlint": "plugins-nvim-oxlint",
+        "plugins-snacks-nvim": "plugins-snacks-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
         "plugins-snipe-nvim": "plugins-snipe-nvim",
         "plugins-template-string-nvim": "plugins-template-string-nvim",

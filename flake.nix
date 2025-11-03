@@ -74,6 +74,11 @@
       flake = false;
     };
 
+    "plugins-snacks-nvim" = {
+      url = "github:folke/snacks.nvim";
+      flake = false;
+    };
+
     "plugins-hypersonic-nvim" = {
       url = "github:tomiis4/hypersonic.nvim";
       flake = false;
@@ -409,6 +414,10 @@
                 {
                   name = "nvim-oxlint";
                   plugin = pkgs.neovimPlugins.nvim-oxlint;
+                }
+                {
+                  name = "snacks.nvim";
+                  plugin = pkgs.neovimPlugins.snacks-nvim;
                 }
 
                 kulala-nvim
