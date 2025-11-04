@@ -728,7 +728,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         end,
         javascript = function(bufnr)
           if require('conform').get_formatter_info('biome', bufnr).available then
-            return { 'biome' }
+            return { 'biome', 'biome-organize-imports' }
           else
             return { 'prettierd', 'prettier', stop_after_first = true }
           end
