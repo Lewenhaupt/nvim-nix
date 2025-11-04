@@ -246,6 +246,7 @@
               jq
               yamlfmt
               kulala-fmt
+              vtsls
             ];
             python = [
               ruff

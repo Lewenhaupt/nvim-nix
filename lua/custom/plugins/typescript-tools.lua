@@ -1,4 +1,5 @@
-return {
+return {}
+--[[ return {
   'pmizio/typescript-tools.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -63,4 +64,4 @@ return {
       },
     },
   },
-}
+} ]]
