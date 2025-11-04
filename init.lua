@@ -724,6 +724,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         },
         biome = {
           require_cwd = true,
+          append_args = { '--log-file=$HOME/biome-logs/log.txt', '--log-level=debug', '--verbose' },
         },
         kulala = {
           command = 'kulala-fmt',
