@@ -436,7 +436,69 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
       },
       -- kickstart.nvim was still on neodev. lazydev is the new version of neodev
     },
-    config = function()
+    opts = function()
+      -- Enable the following language servers
+      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      --
+      --  Add any additional override configuration in the following tables. Available keys are:
+      --  - cmd (table): Override the default command used to start the server
+      --  - filetypes (table): Override the default list of associated filetypes for the server
+      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
+      --  - settings (table): Override the default settings passed when initializing the server.
+      --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      -- NOTE: nixCats: there is help in nixCats for lsps at `:h nixCats.LSPs` and also `:h nixCats.luaUtils`
+      local servers = {
+        -- 'kulala_ls',
+      }
+      -- servers.clangd = {},
+      if require('utils.init').nowork() then
+        servers.gopls = {}
+        servers.pyright = {}
+        servers.rust_analyzer = {}
+      end
+
+      servers.eslint = {}
+      servers.biome = {}
+
+      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+      --
+      -- Some languages (like typescript) have entire language plugins that can be useful:
+      --    https://github.com/pmizio/typescript-tools.nvim
+      --
+      -- But for many setups, the LSP (`tsserver`) will work just fine
+      -- servers.tsserver = {},
+      --
+
+      -- NOTE: nixCats: nixd is not available on mason.
+      if require('nixCatsUtils').isNixCats then
+        servers.nixd = {}
+      elseif require('utils.init').nowork() then
+        servers.rnix = {}
+        servers.nil_ls = {}
+      end
+      servers.lua_ls = {
+        -- cmd = {...},
+        -- filetypes = { ...},
+        -- capabilities = {},
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
+            },
+            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            diagnostics = {
+              globals = { 'nixCats' },
+              disable = { 'missing-fields' },
+            },
+          },
+        },
+      }
+      local ret = {}
+      ret.servers = servers
+
+      return ret
+    end,
+    config = function(_, opts)
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -568,74 +630,17 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-      -- Enable the following language servers
-      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-      --
-      --  Add any additional override configuration in the following tables. Available keys are:
-      --  - cmd (table): Override the default command used to start the server
-      --  - filetypes (table): Override the default list of associated filetypes for the server
-      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-      --  - settings (table): Override the default settings passed when initializing the server.
-      --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-      -- NOTE: nixCats: there is help in nixCats for lsps at `:h nixCats.LSPs` and also `:h nixCats.luaUtils`
-      local servers = {
-        -- 'kulala_ls',
-      }
-      -- servers.clangd = {},
-      if require('utils.init').nowork() then
-        servers.gopls = {}
-        servers.pyright = {}
-        servers.rust_analyzer = {}
-      end
-
-      servers.eslint = {}
-      servers.biome = {}
-
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      --
-      -- But for many setups, the LSP (`tsserver`) will work just fine
-      -- servers.tsserver = {},
-      --
-
-      -- NOTE: nixCats: nixd is not available on mason.
-      if require('nixCatsUtils').isNixCats then
-        servers.nixd = {}
-      elseif require('utils.init').nowork() then
-        servers.rnix = {}
-        servers.nil_ls = {}
-      end
-      servers.lua_ls = {
-        -- cmd = {...},
-        -- filetypes = { ...},
-        -- capabilities = {},
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            diagnostics = {
-              globals = { 'nixCats' },
-              disable = { 'missing-fields' },
-            },
-          },
-        },
-      }
-
       -- NOTE: nixCats: if nix, use lspconfig instead of mason
       -- You could MAKE it work, using lspsAndRuntimeDeps and sharedLibraries in nixCats
       -- but don't... its not worth it. Just add the lsp to lspsAndRuntimeDeps.
       if require('nixCatsUtils').isNixCats then
-        for server_name, _ in pairs(servers) do
+        for server_name, _ in pairs(opts.servers) do
           require('lspconfig')[server_name].setup {
             capabilities = capabilities,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-            cmd = (servers[server_name] or {}).cmd,
-            root_pattern = (servers[server_name] or {}).root_pattern,
+            settings = opts.servers[server_name],
+            filetypes = (opts.servers[server_name] or {}).filetypes,
+            cmd = (opts.servers[server_name] or {}).cmd,
+            root_pattern = (opts.servers[server_name] or {}).root_pattern,
           }
         end
       else
@@ -651,7 +656,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
 
         -- You can add other tools here that you want Mason to install
         -- for you, so that they are available from within Neovim.
-        local ensure_installed = vim.tbl_keys(servers or {})
+        local ensure_installed = vim.tbl_keys(opts.servers or {})
         vim.list_extend(ensure_installed, {
           'stylua', -- Used to format Lua code
         })
@@ -660,7 +665,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         require('mason-lspconfig').setup {
           handlers = {
             function(server_name)
-              local server = servers[server_name] or {}
+              local server = opts.servers[server_name] or {}
               -- This handles overriding only values explicitly passed
               -- by the server configuration above. Useful when disabling
               -- certain features of an LSP (for example, turning off formatting for tsserver)
