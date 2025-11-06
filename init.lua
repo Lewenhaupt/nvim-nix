@@ -735,21 +735,21 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         end,
         typescript = function(bufnr)
           if require('conform').get_formatter_info('biome', bufnr).available then
-            return { 'biome' }
+            return { 'biome', 'biome-organize-imports' }
           else
             return { 'prettierd', 'prettier', stop_after_first = true }
           end
         end,
         javascriptreact = function(bufnr)
           if require('conform').get_formatter_info('biome', bufnr).available then
-            return { 'biome' }
+            return { 'biome', 'biome-organize-imports' }
           else
             return { 'prettierd', 'prettier', stop_after_first = true }
           end
         end,
         typescriptreact = function(bufnr)
           if require('conform').get_formatter_info('biome', bufnr).available then
-            return { 'biome' }
+            return { 'biome', 'biome-organize-imports' }
           else
             return { 'prettierd', 'prettier', stop_after_first = true }
           end
