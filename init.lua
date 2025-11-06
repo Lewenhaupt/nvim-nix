@@ -436,6 +436,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
       },
       -- kickstart.nvim was still on neodev. lazydev is the new version of neodev
     },
+    opts_extend = { 'servers.*.keys' },
     opts = function()
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -498,7 +499,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
 
       return ret
     end,
-    config = function(_, opts)
+    config = vim.schedule_wrap(function(_, opts)
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -635,13 +636,18 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
       -- but don't... its not worth it. Just add the lsp to lspsAndRuntimeDeps.
       if require('nixCatsUtils').isNixCats then
         for server_name, _ in pairs(opts.servers) do
-          require('lspconfig')[server_name].setup {
+          local sopts = opts.servers[server_name]
+          if opts.setup[server_name] then
+            opts.setup[server_name](server_name, sopts)
+          end
+          vim.lsp.config(server_name, {
             capabilities = capabilities,
-            settings = opts.servers[server_name],
-            filetypes = (opts.servers[server_name] or {}).filetypes,
-            cmd = (opts.servers[server_name] or {}).cmd,
-            root_pattern = (opts.servers[server_name] or {}).root_pattern,
-          }
+            settings = sopts,
+            filetypes = (sopts or {}).filetypes,
+            cmd = (sopts or {}).cmd,
+            root_pattern = (sopts or {}).root_pattern,
+          })
+          vim.lsp.enable(server_name)
         end
       else
         -- NOTE: nixCats: and if no nix, do it the normal way
@@ -666,16 +672,19 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
           handlers = {
             function(server_name)
               local server = opts.servers[server_name] or {}
+              if opts.setup[server_name] then
+                opts.setup[server_name](server_name, server)
+              end
               -- This handles overriding only values explicitly passed
               -- by the server configuration above. Useful when disabling
               -- certain features of an LSP (for example, turning off formatting for tsserver)
               server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-              require('lspconfig')[server_name].setup(server)
+              vim.lsp.config(server_name, server)
             end,
           },
         }
       end
-    end,
+    end),
   },
 
   { -- Autoformat
@@ -1014,6 +1023,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
+  { import = 'custom.plugins.languages' },
 }, lazyOptions)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
