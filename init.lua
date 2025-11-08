@@ -355,13 +355,15 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup {
-        keys = {
-          scroll_down = '<c-j>', -- binding to scroll down inside the popup
-          scroll_up = '<c-k>', -- binding to scroll up inside the popup
-        },
-      }
+    opts = {
+      preset = 'helix',
+      keys = {
+        scroll_down = '<c-j>', -- binding to scroll down inside the popup
+        scroll_up = '<c-k>', -- binding to scroll up inside the popup
+      },
+    },
+    config = function(_, opts) -- This is the function that runs, AFTER loading
+      require('which-key').setup(opts)
 
       -- Document existing key chains
       require('which-key').add {
