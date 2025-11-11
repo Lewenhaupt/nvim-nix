@@ -12,8 +12,6 @@ return {
     explorer = { enabled = false },
     indent = { enabled = false },
     input = { enabled = false },
-    -- Enable this later and try it instead of telescope
-    picker = { enabled = false },
     notifier = { enabled = false },
     quickfile = { enabled = true },
     scope = { enabled = true },
