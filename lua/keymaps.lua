@@ -50,7 +50,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- Leap
 -- vim.keymap.set({ 'n', 'x', 'o' }, 'f', '<Plug>(leap-forward)')
 -- vim.keymap.set({ 'n', 'x', 'o' }, 'F', '<Plug>(leap-backward)')
-vim.keymap.set({ 'n', 'x', 'o' }, 'gf', '<Plug>(leap-from-window)')
+-- vim.keymap.set({ 'n', 'x', 'o' }, 'gf', '<Plug>(leap-from-window)')
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
