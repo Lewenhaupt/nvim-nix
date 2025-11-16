@@ -335,6 +335,7 @@
                 nui-nvim
                 mini-nvim
                 all-grammars
+                quicker-nvim
 
                 {
                   name = "mini.icons";
