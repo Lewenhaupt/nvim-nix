@@ -46,13 +46,14 @@ return {
       { 'gI', vim.lsp.buf.implementation, desc = 'Goto Implementation' },
       { 'gy', vim.lsp.buf.type_definition, desc = 'Goto T[y]pe Definition' },
       { 'gD', vim.lsp.buf.declaration, desc = 'Goto Declaration' },
-      {
-        'K',
-        function()
-          return vim.lsp.buf.hover()
-        end,
-        desc = 'Hover',
-      },
+      -- TODO: We currently set this in typescript.lua via better-type-hover, but ideally we should be able to set this one if that one doesn't exist
+      -- {
+      --   'K',
+      --   function()
+      --     return vim.lsp.buf.hover()
+      --   end,
+      --   desc = 'Hover',
+      -- },
       {
         'gK',
         function()

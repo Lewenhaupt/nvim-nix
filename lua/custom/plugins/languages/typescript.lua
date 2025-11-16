@@ -1,6 +1,17 @@
 return {
   {
     'neovim/nvim-lspconfig',
+    dependencies = {
+      {
+        'Sebastian-Nielsen/better-type-hover',
+        ft = { 'typescript', 'typescriptreact' },
+        config = function()
+          require('better-type-hover').setup {
+            openTypeDocKeymap = 'K',
+          }
+        end,
+      },
+    },
     opts = {
       -- make sure mason installs the server
       servers = {
