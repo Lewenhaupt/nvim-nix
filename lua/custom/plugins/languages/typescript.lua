@@ -70,7 +70,7 @@ return {
             resolve 'vtsls'
           end
 
-          vim.api.nvim_create_autocmd('LspAttach', {
+          --[[ vim.api.nvim_create_autocmd('LspAttach', {
             callback = function(args)
               local client = vim.lsp.get_client_by_id(args.data.client_id)
               if not client then
@@ -135,14 +135,14 @@ return {
                 end
               end
             end,
-          })
+          }) ]]
 
           -- TODO: This isn't working, the command exists but it's not triggering
           Snacks.util.lsp.on({ name = 'vtsls' }, function(buffer, client)
             print 'lsp on vtsls triggered'
 
             print(vim.inspect(client.commands))
-            --[[ client.commands['_typescript.moveToFileRefactoring'] = function(command, ctx)
+            client.commands['_typescript.moveToFileRefactoring'] = function(command, ctx)
               print 'command detected'
               ---@type string, string, lsp.Range
               local action, uri, range = unpack(command.arguments)
@@ -195,7 +195,7 @@ return {
                   end
                 end)
               end)
-            end ]]
+            end
           end)
           -- copy typescript settings to javascript
           opts.settings.javascript = vim.tbl_deep_extend('force', {}, opts.settings.typescript, opts.settings.javascript or {})

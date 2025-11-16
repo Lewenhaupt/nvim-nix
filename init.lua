@@ -371,6 +371,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         { '<leader>c_', hidden = true },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>d_', hidden = true },
+        -- TODO: Not correct anymore
         { '<leader>r', group = '[R]ename' },
         { '<leader>r_', hidden = true },
         { '<leader>f', group = '[F]ind' },
@@ -395,7 +396,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-  { -- LSP Configuration & Plugins
+  --[[ { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
@@ -687,7 +688,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         }
       end
     end),
-  },
+  }, ]]
 
   { -- Autoformat
     'stevearc/conform.nvim',
