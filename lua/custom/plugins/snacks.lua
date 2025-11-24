@@ -15,6 +15,9 @@ return {
     notifier = { enabled = false },
     quickfile = { enabled = true },
     scope = { enabled = true },
+    scratch = {
+      enabled = true,
+    },
     scroll = { enabled = true },
     statuscolumn = { enabled = false },
     words = { enabled = false },
@@ -26,6 +29,20 @@ return {
         Snacks.bufdelete()
       end,
       desc = 'Delete Buffer',
+    },
+    {
+      "<leader>'",
+      function()
+        Snacks.scratch()
+      end,
+      desc = 'Toggle Scratch Buffer',
+    },
+    {
+      "<leader>f'",
+      function()
+        Snacks.scratch.select()
+      end,
+      desc = 'Select Scratch Buffer',
     },
   },
 }

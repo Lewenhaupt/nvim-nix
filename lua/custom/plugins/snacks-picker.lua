@@ -413,14 +413,14 @@ return {
       function()
         Snacks.picker.git_grep()
       end,
-      desc = 'Grep',
+      desc = 'Grep (Git)',
     },
     {
       '<leader>fG',
       function()
         Snacks.picker.grep()
       end,
-      desc = 'Grep',
+      desc = 'Grep (All)',
     },
     {
       '<leader>fch',
