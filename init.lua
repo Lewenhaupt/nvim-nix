@@ -136,6 +136,17 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+    ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+  },
+}
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -649,6 +660,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
             filetypes = (sopts or {}).filetypes,
             cmd = (sopts or {}).cmd,
             root_pattern = (sopts or {}).root_pattern,
+            commands = (sopts or {}).commands,
           })
           vim.lsp.enable(server_name)
         end
