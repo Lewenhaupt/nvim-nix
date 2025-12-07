@@ -409,14 +409,14 @@ return {
       desc = 'Buffers',
     },
     {
-      '<leader>fg',
+      '<leader>fG',
       function()
         Snacks.picker.git_grep()
       end,
       desc = 'Grep (Git)',
     },
     {
-      '<leader>fG',
+      '<leader>fg',
       function()
         Snacks.picker.grep()
       end,
