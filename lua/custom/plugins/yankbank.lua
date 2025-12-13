@@ -9,7 +9,7 @@ return {
   end,
   keys = {
     {
-      '<leader>y',
+      '<leader>Y',
       mode = { 'n' },
       '<cmd>YankBank<cr>',
       desc = 'YankBank',

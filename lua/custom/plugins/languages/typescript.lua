@@ -58,7 +58,6 @@ return {
       },
       setup = {
         vtsls = function(_, opts)
-          print 'setup for vtsls called'
           if vim.lsp.config.denols and vim.lsp.config.vtsls then
             ---@param server string
             local resolve = function(server)
@@ -81,85 +80,13 @@ return {
             resolve 'vtsls'
           end
 
-          --[[ vim.api.nvim_create_autocmd('LspAttach', {
-            callback = function(args)
-              local client = vim.lsp.get_client_by_id(args.data.client_id)
-              if not client then
-                return
-              end
-
-              if client.name == 'vtsls' then
-                print 'creating client command'
-                client.commands['_typescript.moveToFileRefactoring'] = function(command, ctx)
-                  print 'command detected'
-                  ---@type string, string, lsp.Range
-                  local action, uri, range = unpack(command.arguments)
-
-                  local function move(newf)
-                    print 'moving file'
-                    client:request('workspace/executeCommand', {
-                      command = command.command,
-                      arguments = { action, uri, range, newf },
-                    })
-                  end
-
-                  local fname = vim.uri_to_fname(uri)
-                  client:request('workspace/executeCommand', {
-                    command = 'typescript.tsserverRequest',
-                    arguments = {
-                      'getMoveToRefactoringFileSuggestions',
-                      {
-                        file = fname,
-                        startLine = range.start.line + 1,
-                        startOffset = range.start.character + 1,
-                        endLine = range['end'].line + 1,
-                        endOffset = range['end'].character + 1,
-                      },
-                    },
-                  }, function(_, result)
-                    ---@type string[]
-                    local files = result.body.files
-                    print 'querying for new path'
-                    table.insert(files, 1, 'Enter new path...')
-                    vim.ui.select(files, {
-                      prompt = 'Select move destination:',
-                      format_item = function(f)
-                        return vim.fn.fnamemodify(f, ':~:.')
-                      end,
-                    }, function(f)
-                      print 'in callback'
-                      if f and f:find '^Enter new path' then
-                        print 'query for move destination'
-                        vim.ui.input({
-                          prompt = 'Enter move destination:',
-                          default = vim.fn.fnamemodify(fname, ':h') .. '/',
-                          completion = 'file',
-                        }, function(newf)
-                          return newf and move(newf)
-                        end)
-                      elseif f then
-                        print 'move file'
-                        move(f)
-                      end
-                    end)
-                  end)
-                end
-              end
-            end,
-          }) ]]
-
           -- TODO: This isn't working, the command exists but it's not triggering
           Snacks.util.lsp.on({ name = 'vtsls' }, function(buffer, client)
-            print 'lsp on vtsls triggered'
-
-            print(vim.inspect(client.commands))
             client.commands['_typescript.moveToFileRefactoring'] = function(command, ctx)
-              print 'command detected'
               ---@type string, string, lsp.Range
               local action, uri, range = unpack(command.arguments)
 
               local function move(newf)
-                print 'moving file'
                 client:request('workspace/executeCommand', {
                   command = command.command,
                   arguments = { action, uri, range, newf },
@@ -182,7 +109,6 @@ return {
               }, function(_, result)
                 ---@type string[]
                 local files = result.body.files
-                print 'querying for new path'
                 table.insert(files, 1, 'Enter new path...')
                 vim.ui.select(files, {
                   prompt = 'Select move destination:',
@@ -190,9 +116,7 @@ return {
                     return vim.fn.fnamemodify(f, ':~:.')
                   end,
                 }, function(f)
-                  print 'in callback'
                   if f and f:find '^Enter new path' then
-                    print 'query for move destination'
                     vim.ui.input({
                       prompt = 'Enter move destination:',
                       default = vim.fn.fnamemodify(fname, ':h') .. '/',
@@ -201,7 +125,6 @@ return {
                       return newf and move(newf)
                     end)
                   elseif f then
-                    print 'move file'
                     move(f)
                   end
                 end)

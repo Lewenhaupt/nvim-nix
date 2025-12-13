@@ -130,6 +130,17 @@
     "plugins-nvim-oxlint" = {
       url = "github:soulsam480/nvim-oxlint";
     };
+
+    "plugins-oil-git-nvim" = {
+      url = "github:benomahony/oil-git.nvim";
+      flake = false;
+    };
+
+    "plugins-oil-lsp-diagnostics-nvim" = {
+      url = "github:JezerM/oil-lsp-diagnostics.nvim";
+      flake = false;
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay"; };
 
@@ -420,6 +431,14 @@
                 {
                   name = "snacks.nvim";
                   plugin = pkgs.neovimPlugins.snacks-nvim;
+                }
+                {
+                  name = "oil-git.nvim";
+                  plugin = pkgs.neovimPlugins.oil-git-nvim;
+                }
+                {
+                  name = "oil-lsp-diagnostics.nvim";
+                  plugin = pkgs.neovimPlugins.oil-lsp-diagnostics-nvim;
                 }
 
                 kulala-nvim
