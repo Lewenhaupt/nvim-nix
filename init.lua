@@ -730,6 +730,15 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
           args = { 'format', '$FILENAME' },
           stdin = false,
         },
+        rumdl = {
+          meta = {
+            url = 'https://github.com/rvben/rumdl',
+            description = 'Markdown Linter and Formatter written in Rust.',
+          },
+          command = 'rumdl',
+          args = { 'fmt', '-' },
+          stdin = true,
+        },
       },
       notify_on_error = false,
       format_on_save = function(bufnr)
@@ -787,6 +796,7 @@ require('nixCatsUtils.lazyCat').setup(pluginList, nixLazyPath, {
         yaml = { 'yamlfmt' },
         rust = { 'rustfmt', lsp_format = 'fallback' },
         go = { 'gofumpt' },
+        markdown = { 'rumdl' },
       },
     },
   },

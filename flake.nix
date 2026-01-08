@@ -256,6 +256,7 @@
               nixfmt-rfc-style
               jq
               yamlfmt
+              rumdl
               kulala-fmt
               vtsls
             ];
