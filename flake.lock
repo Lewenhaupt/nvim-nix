@@ -255,22 +255,6 @@
         "type": "github"
       }
     },
-    "plugins-oil-git-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1756863864,
-        "narHash": "sha256-QQj3ck+5GpA/htG0tZzniS5bbfRscvcfXjMUjY8F9A4=",
-        "owner": "benomahony",
-        "repo": "oil-git.nvim",
-        "rev": "d1f27a5982df35b70fb842aa6bbfac10735c7265",
-        "type": "github"
-      },
-      "original": {
-        "owner": "benomahony",
-        "repo": "oil-git.nvim",
-        "type": "github"
-      }
-    },
     "plugins-oil-lsp-diagnostics-nvim": {
       "flake": false,
       "locked": {
@@ -433,7 +417,6 @@
         "plugins-messenger-nvim": "plugins-messenger-nvim",
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-nvim-oxlint": "plugins-nvim-oxlint",
-        "plugins-oil-git-nvim": "plugins-oil-git-nvim",
         "plugins-oil-lsp-diagnostics-nvim": "plugins-oil-lsp-diagnostics-nvim",
         "plugins-snacks-nvim": "plugins-snacks-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
