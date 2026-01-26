@@ -13,7 +13,8 @@ return {
         -- because we will be using nix to download things instead.
         enabled = require('nixCatsUtils').lazyAdd(true, false),
       },
-      { 'j-hui/fidget.nvim', opts = {} },
+      -- Seems to be what has been breaking long filenames on mac
+      { 'j-hui/fidget.nvim', enabled = false, opts = {} },
       { 'saghen/blink.cmp' },
       {
         'folke/lazydev.nvim',
