@@ -271,6 +271,22 @@
         "type": "github"
       }
     },
+    "plugins-smart-motion-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771446739,
+        "narHash": "sha256-sZi8AjACw+et978xgMo3M8lQTLFrxQWy+NEO7plxiIw=",
+        "owner": "FluxxField",
+        "repo": "smart-motion.nvim",
+        "rev": "5f8863eaa3f8d60bbd845097b4b1f4fc462c827d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FluxxField",
+        "repo": "smart-motion.nvim",
+        "type": "github"
+      }
+    },
     "plugins-snacks-nvim": {
       "flake": false,
       "locked": {
@@ -418,6 +434,7 @@
         "plugins-moody-nvim": "plugins-moody-nvim",
         "plugins-nvim-oxlint": "plugins-nvim-oxlint",
         "plugins-oil-lsp-diagnostics-nvim": "plugins-oil-lsp-diagnostics-nvim",
+        "plugins-smart-motion-nvim": "plugins-smart-motion-nvim",
         "plugins-snacks-nvim": "plugins-snacks-nvim",
         "plugins-snipe-lsp-nvim": "plugins-snipe-lsp-nvim",
         "plugins-snipe-nvim": "plugins-snipe-nvim",
