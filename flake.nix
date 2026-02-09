@@ -127,6 +127,11 @@
       flake = false;
     };
 
+    "plugins-smart-motion-nvim" = {
+      url = "github:FluxxField/smart-motion.nvim";
+      flake = false;
+    };
+
     "plugins-nvim-oxlint" = {
       url = "github:soulsam480/nvim-oxlint";
     };
@@ -431,6 +436,10 @@
                 {
                   name = "oil-lsp-diagnostics.nvim";
                   plugin = pkgs.neovimPlugins.oil-lsp-diagnostics-nvim;
+                }
+                {
+                  name = "smart-motion.nvim";
+                  plugin = pkgs.neovimPlugins.smart-motion-nvim;
                 }
 
                 kulala-nvim
