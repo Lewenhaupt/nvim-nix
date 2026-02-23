@@ -1,6 +1,7 @@
 return {
   'mizlan/iswap.nvim',
   event = 'VeryLazy',
+  enabled = false, -- currently broken because it's not up-to-date with treesitter
   keys = {
     {
       '<leader>is',

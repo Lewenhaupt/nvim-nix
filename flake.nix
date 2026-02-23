@@ -248,7 +248,7 @@
               stylua
               nodejs_20
               typescript
-              nixfmt-rfc-style
+              nixfmt
               jq
               yamlfmt
               rumdl
@@ -285,7 +285,6 @@
               eslint
               eslint_d
               prettierd
-              nodePackages.jsonlint
             ];
           };
 
