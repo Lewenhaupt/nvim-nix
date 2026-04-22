@@ -397,7 +397,7 @@ return {
     {
       '<leader><space>',
       function()
-        Snacks.picker.smart { filter = { cwd = true } }
+        Snacks.picker.smart { filter = { cwd = true }, hidden = true }
       end,
       desc = 'Smart Find Files',
     },
@@ -411,16 +411,16 @@ return {
     {
       '<leader>fG',
       function()
-        Snacks.picker.git_grep()
+        Snacks.picker.grep { hidden = true, ignored = true }
       end,
-      desc = 'Grep (Git)',
+      desc = 'Grep (All Files)',
     },
     {
       '<leader>fg',
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep { hidden = true }
       end,
-      desc = 'Grep (All)',
+      desc = 'Grep',
     },
     {
       '<leader>fch',
@@ -440,7 +440,7 @@ return {
     {
       '<leader>ff',
       function()
-        Snacks.picker.files()
+        Snacks.picker.files { hidden = true }
       end,
       desc = 'Find Files',
     },
