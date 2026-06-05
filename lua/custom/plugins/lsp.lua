@@ -288,6 +288,12 @@ return {
             keys = {},
           },
           stylua = { enabled = false },
+          rumdl = {
+            mason = not require('nixCatsUtils').isNixCats,
+            cmd = { 'rumdl', 'server' },
+            filetypes = { 'markdown' },
+            root_markers = { '.git' },
+          },
           lua_ls = {
             -- mason = false, -- set to false if you don't want this server to be installed with mason
             -- Use this to add any additional keymaps
