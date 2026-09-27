@@ -112,11 +112,6 @@
       flake = false;
     };
 
-    "plugins-goose-nvim" = {
-      url = "github:azorng/goose.nvim";
-      flake = false;
-    };
-
     "plugins-amazonq-nvim" = {
       url = "github:awslabs/amazonq.nvim";
       flake = false;
@@ -138,6 +133,13 @@
 
     "plugins-oil-lsp-diagnostics-nvim" = {
       url = "github:JezerM/oil-lsp-diagnostics.nvim";
+      flake = false;
+    };
+
+    # Does not use the `plugins-` prefix because it needs a build step that the
+    # standard plugin overlay cannot do. It is built in ./overlays/vellum.nix.
+    "vellum-nvim" = {
+      url = "github:blackhat-7/vellum.nvim";
       flake = false;
     };
 
@@ -192,15 +194,14 @@
         (
           let
             # see :help nixCats.flake.outputs.overlays
-            dependencyOverlays = # (import ./overlays inputs) ++
-              [
-                # This overlay grabs all the inputs named in the format
-                # `plugins-<pluginName>`
-                # Once we add this overlay to our nixpkgs, we are able to
-                # use `pkgs.neovimPlugins`, which is a set of our plugins.
-                (utils.standardPluginOverlay inputs)
-                # add any flake overlays here.
-              ];
+            dependencyOverlays = (import ./overlays inputs) ++ [
+              # This overlay grabs all the inputs named in the format
+              # `plugins-<pluginName>`
+              # Once we add this overlay to our nixpkgs, we are able to
+              # use `pkgs.neovimPlugins`, which is a set of our plugins.
+              (utils.standardPluginOverlay inputs)
+              # add any flake overlays here.
+            ];
           in
           # these overlays will be wrapped with ${system}
           # and we will call the same utils.eachSystem function
@@ -251,7 +252,7 @@
               lua-language-server
               nixd
               stylua
-              nodejs_20
+              nodejs_22
               typescript
               nixfmt
               jq
@@ -293,18 +294,26 @@
             ];
           };
 
+          # environmentVariables:
+          # this section is for environment variables that should be available
+          # at RUN TIME for plugins.
+          environmentVariables = {
+            general = {
+              # vellum uses puppeteer for diagrams, display math and images.
+              # Point it at Chromium from nixpkgs instead of a downloaded one.
+              PUPPETEER_EXECUTABLE_PATH = "${pkgs.chromium}/bin/chromium";
+            };
+          };
+
           # This is for plugins that will load at startup without using packadd:
           startupPlugins =
             with pkgs.vimPlugins;
             let
-              tree-sitter-kulala-http-grammar = pkgs.tree-sitter.buildGrammar {
-                language = "kulala_http";
-                version = pkgs.vimPlugins.kulala-nvim.version;
-                src = pkgs.vimPlugins.kulala-nvim;
-                location = "lua/tree-sitter";
-              };
+              # nixpkgs now builds the kulala_http grammar from kulala.nvim's
+              # source and exposes it as a dependency of kulala-nvim, so it no
+              # longer needs to be built here.
               all-grammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (
-                plugins: pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [ tree-sitter-kulala-http-grammar ]
+                plugins: pkgs.vimPlugins.nvim-treesitter.allGrammars
               );
             in
             {
@@ -442,7 +451,10 @@
                 }
 
                 kulala-nvim
-                render-markdown-nvim
+                {
+                  name = "vellum.nvim";
+                  plugin = pkgs.neovimPlugins.vellum-nvim;
+                }
                 lazygit-nvim
                 smart-open-nvim
                 telescope-fzy-native-nvim
@@ -475,10 +487,6 @@
                 {
                   name = "amazonq.nvim";
                   plugin = pkgs.neovimPlugins.amazonq-nvim;
-                }
-                {
-                  name = "goose.nvim";
-                  plugin = pkgs.neovimPlugins.goose-nvim;
                 }
               ];
               latex = [

@@ -17,11 +17,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1771423170,
-        "narHash": "sha256-K7Dg9TQ0mOcAtWTO/FX/FaprtWQ8BmEXTpLIaNRhEwU=",
+        "lastModified": 1790480522,
+        "narHash": "sha256-fXrm/q9klVBtVq5rGQ+XpI/dokPuSB15ZK2CZvWxXOk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bcc4a9d9533c033d806a46b37dc444f9b0da49dd",
+        "rev": "8d5d270900d3fc75655ea2d9d248b234f6631439",
         "type": "github"
       },
       "original": {
@@ -108,22 +108,6 @@
       "original": {
         "owner": "NotAShelf",
         "repo": "direnv.nvim",
-        "type": "github"
-      }
-    },
-    "plugins-goose-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1748279672,
-        "narHash": "sha256-liJsIvD9o8UZ/eaZ2mO0q9Vr2NRpln+xMIimH0HkNhI=",
-        "owner": "azorng",
-        "repo": "goose.nvim",
-        "rev": "04804ebb504c71df3a5f77a5e18cedb9070336ea",
-        "type": "github"
-      },
-      "original": {
-        "owner": "azorng",
-        "repo": "goose.nvim",
         "type": "github"
       }
     },
@@ -424,7 +408,6 @@
         "plugins-buffer-reopen-nvim": "plugins-buffer-reopen-nvim",
         "plugins-diffview-nvim": "plugins-diffview-nvim",
         "plugins-direnv-nvim": "plugins-direnv-nvim",
-        "plugins-goose-nvim": "plugins-goose-nvim",
         "plugins-helpview-nvim": "plugins-helpview-nvim",
         "plugins-here-term": "plugins-here-term",
         "plugins-hypersonic-nvim": "plugins-hypersonic-nvim",
@@ -442,7 +425,24 @@
         "plugins-treewalker-nvim": "plugins-treewalker-nvim",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim",
         "plugins-twoslash-queries-nvim": "plugins-twoslash-queries-nvim",
-        "plugins-yankbank-nvim": "plugins-yankbank-nvim"
+        "plugins-yankbank-nvim": "plugins-yankbank-nvim",
+        "vellum-nvim": "vellum-nvim"
+      }
+    },
+    "vellum-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790191215,
+        "narHash": "sha256-LZOKPiy9tpCEe84ZrbKKfdhBjqrTSsmSeVAjBbrqMFM=",
+        "owner": "blackhat-7",
+        "repo": "vellum.nvim",
+        "rev": "c9a8665c5d306bf56c6df89896fed8bfaf3110b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blackhat-7",
+        "repo": "vellum.nvim",
+        "type": "github"
       }
     }
   },
