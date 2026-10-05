@@ -1,0 +1,9 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "server",
+  "dolt_database": "nvim_nix",
+  "project_id": "1f603a96-03b8-48fd-a29c-a84a72c4cf81",
+  "global_dolt_database": "beads_global",
+  "global_project_id": "00000000-0000-0000-0000-000000000000"
+}
