@@ -25,6 +25,13 @@
     # nixpkgs.url = "github:khaneliman/nixpkgs/sqlite";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
+    # belayd-agent-harness is the canonical source of the bd (beads) version
+    # used by the local stack and the pi runtime. Following its `beads` input
+    # keeps this devShell's bd in lockstep with the harness instead of racing
+    # the latest upstream beads release.
+    agent-harness.url = "github:Lewenhaupt/agent-harness";
+    beads.follows = "agent-harness/beads";
+
     "plugins-ts-error-translator-nvim" = {
       url = "github:dmmulroy/ts-error-translator.nvim";
       flake = false;
@@ -764,7 +771,12 @@
         devShells = {
           default = pkgs.mkShell {
             name = defaultPackageName;
-            packages = [ defaultPackage ];
+            packages = [
+              defaultPackage
+              # Beads task tracking; bd shells out to `dolt` for its SQL DB.
+              inputs.beads.packages.${system}.default
+              pkgs.dolt
+            ];
             inputsFrom = [ ];
             shellHook = "";
           };
