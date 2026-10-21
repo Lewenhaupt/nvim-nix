@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "runId": "mvht78qp",
+  "taskId": "bd-2",
+  "phase": "review",
+  "sessionName": "belayd-bd-2-sub-review-mvhsiyy0",
+  "status": "completed",
+  "startedAt": 1792568834314,
+  "completedAt": 1792568883209,
+  "exitCode": 0,
+  "model": "opencode-go/glm-5.3-flash",
+  "telemetry": {
+    "attempts": 1,
+    "fallbacks": 0,
+    "quotaFailures": 0,
+    "noOps": 0,
+    "cost": 0.010487839999999998
+  }
+}

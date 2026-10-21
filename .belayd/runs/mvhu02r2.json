@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "runId": "mvhu02r2",
+  "taskId": "bd-2",
+  "phase": "proof",
+  "sessionName": "belayd-bd-2-sub-proof-mvhu02r2",
+  "status": "completed",
+  "startedAt": 1792570179571,
+  "completedAt": 1792570978653,
+  "exitCode": 0,
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "telemetry": {
+    "attempts": 2,
+    "fallbacks": 0,
+    "quotaFailures": 0,
+    "noOps": 0,
+    "cost": 0.06913939799999999
+  }
+}

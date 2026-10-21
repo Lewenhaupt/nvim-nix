@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "runId": "mvhtbyym",
+  "taskId": "bd-2",
+  "phase": "userguide",
+  "sessionName": "belayd-bd-2-sub-userguide-mvhtbyym",
+  "status": "completed",
+  "startedAt": 1792569054914,
+  "completedAt": 1792570170933,
+  "exitCode": 0,
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "telemetry": {
+    "attempts": 2,
+    "fallbacks": 0,
+    "quotaFailures": 0,
+    "noOps": 0,
+    "cost": 0.04554873000000001
+  }
+}

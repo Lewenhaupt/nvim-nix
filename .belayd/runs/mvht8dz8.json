@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "runId": "mvht8dz8",
+  "taskId": "bd-2",
+  "phase": "test",
+  "sessionName": "belayd-bd-2-sub-test-mvht8dz8",
+  "status": "completed",
+  "startedAt": 1792568887752,
+  "completedAt": 1792569047613,
+  "exitCode": 0,
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "telemetry": {
+    "attempts": 2,
+    "fallbacks": 1,
+    "quotaFailures": 0,
+    "noOps": 0,
+    "cost": 0.014941157400000005
+  }
+}

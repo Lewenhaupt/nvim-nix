@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "runId": "mvhuia6z",
+  "taskId": "bd-2",
+  "phase": "commit",
+  "sessionName": "belayd-bd-2-sub-commit-mvhuia6z",
+  "status": "completed",
+  "startedAt": 1792571029019,
+  "completedAt": 1792571029842,
+  "exitCode": 0
+}

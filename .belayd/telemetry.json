@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "stats": [
+    {
+      "phase": "implement",
+      "model": "llmgateway/deepseek-v4.1-flash",
+      "attempts": 1,
+      "fallbacks": 0,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0.0118476
+    },
+    {
+      "phase": "implement",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "attempts": 4,
+      "fallbacks": 0,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0.10043469599999998
+    },
+    {
+      "phase": "proof",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "attempts": 2,
+      "fallbacks": 0,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0.06913939799999999
+    },
+    {
+      "phase": "proof-verifier",
+      "model": "opencode-go/mimo-v2.5",
+      "attempts": 1,
+      "fallbacks": 0,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0.0024796856
+    },
+    {
+      "phase": "review",
+      "model": "opencode-go/glm-5.3-flash",
+      "attempts": 3,
+      "fallbacks": 0,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0.09263617999999998
+    },
+    {
+      "phase": "test",
+      "model": "llmgateway/deepseek-v4.1-flash",
+      "attempts": 1,
+      "fallbacks": 1,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0.014941157400000005
+    },
+    {
+      "phase": "test",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "attempts": 1,
+      "fallbacks": 0,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0
+    },
+    {
+      "phase": "userguide",
+      "model": "llmgateway/deepseek-v4.1-flash",
+      "attempts": 1,
+      "fallbacks": 0,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0.022205556
+    },
+    {
+      "phase": "userguide",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "attempts": 1,
+      "fallbacks": 0,
+      "quotaFailures": 0,
+      "noOps": 0,
+      "cost": 0.023343174000000005
+    }
+  ],
+  "totals": {
+    "attempts": 15,
+    "fallbacks": 1,
+    "quotaFailures": 0,
+    "noOps": 0,
+    "cost": 0.337027447
+  },
+  "updatedAt": 1792571046771
+}
