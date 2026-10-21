@@ -10,3 +10,5 @@ result
 .beads-credential-key
 .beads/proxieddb/
 *.gate.lock*
+
+.belayd/
