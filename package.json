@@ -1,0 +1,10 @@
+{
+  "name": "nvim-nix",
+  "private": true,
+  "description": "Quality-gate entrypoints for this Neovim Lua configuration (no JavaScript toolchain).",
+  "scripts": {
+    "typecheck": "sh scripts/run-gate.sh typecheck",
+    "lint": "sh scripts/run-gate.sh lint",
+    "test": "sh scripts/run-gate.sh test"
+  }
+}

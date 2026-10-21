@@ -1,0 +1,5 @@
+# pnpm >= 10 reads pnpm-specific settings from this file (not .npmrc).
+# The harness-enforced gates (`pnpm typecheck|lint|test`) would otherwise run an
+# implicit install before every script, creating node_modules/ and
+# pnpm-lock.yaml in this dependency-free repository. Disable that.
+verifyDepsBeforeRun: false

@@ -77,7 +77,47 @@ return {
               })
             end
             resolve 'denols'
-            resolve 'vtsls'
+
+            -- vtsls: prefer the monorepo/workspace root over the nearest nested package.
+            -- The shipped nvim-lspconfig root_dir only looks for lock files and .git, and
+            -- Neovim ignores root_markers whenever root_dir is set, so it must be replaced.
+            ---@param name string
+            ---@param dir string
+            ---@return boolean
+            local has_workspaces = function(name, dir)
+              if name ~= 'package.json' then
+                return false
+              end
+              local file = io.open(vim.fs.joinpath(dir, name), 'r')
+              if not file then
+                return false
+              end
+              local content = file:read '*a'
+              file:close()
+              if not content then
+                return false
+              end
+              local ok, decoded = pcall(vim.json.decode, content)
+              return ok and type(decoded) == 'table' and type(decoded.workspaces) == 'table'
+            end
+
+            ---@type (string|fun(name: string, path: string): boolean)[]
+            local workspace_markers = { 'pnpm-workspace.yaml', 'turbo.json', 'nx.json', 'lerna.json', 'rush.json', has_workspaces }
+
+            vim.lsp.config('vtsls', {
+              root_dir = function(bufnr, on_dir)
+                -- Deno buffers are owned by denols; do not attach vtsls.
+                if vim.fs.root(bufnr, { 'deno.json', 'deno.jsonc' }) then
+                  return
+                end
+                local root = vim.fs.root(bufnr, workspace_markers)
+                  or vim.fs.root(bufnr, { 'pnpm-lock.yaml', 'package-lock.json', 'yarn.lock', 'bun.lockb', 'bun.lock' })
+                  or vim.fs.root(bufnr, { '.git' })
+                  or vim.fs.root(bufnr, { 'tsconfig.json', 'jsconfig.json' })
+                  or vim.fn.getcwd()
+                on_dir(root)
+              end,
+            })
           end
 
           -- TODO: This isn't working, the command exists but it's not triggering
