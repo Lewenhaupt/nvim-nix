@@ -260,7 +260,13 @@
               nixd
               stylua
               nodejs_22
+              # TypeScript 7 (tsgo): native `tsc` that also serves `--lsp`.
               typescript
+              # TypeScript 5.9.3 CLI: `tsc5` + `tsserver` (no bin/tsc clash).
+              typescript5
+              # nvim's fast-recursive file watcher backend; tsgo registers
+              # workspace watchers and nvim falls back to polling without it.
+              inotify-tools
               nixfmt
               jq
               yamlfmt

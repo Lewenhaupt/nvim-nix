@@ -16,3 +16,11 @@ It also can work without any nix whatsoever.
 It has been adapted such that it works either way!
 
 All notes about the lazy wrapper are in comments that begin with the string: `NOTE: nixCats:` so to find all of the info, search for that.
+
+## TypeScript / JavaScript LSP
+
+- [docs/typescript-lsp.md](docs/typescript-lsp.md) — which language server attaches when (`tsc`/tsgo for
+  TypeScript ≥ 6 projects, `vtsls` for TS 5.x), the per-platform binaries, the tsconfig diagnostics
+  tsgo reports, file watching, and the `vim.g.ts_lsp_force_*` overrides.
+- [docs/vtsls-root-resolution.md](docs/vtsls-root-resolution.md) — the monorepo/workspace root
+  resolver used when `vtsls` is the selected server.

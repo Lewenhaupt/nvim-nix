@@ -7,7 +7,17 @@ so a file in `packages/a/src/index.ts` could end up with an LSP workspace rooted
 The new resolver prefers the monorepo/workspace root, which is what makes cross-package imports,
 project-wide diagnostics and the workspace TypeScript SDK resolve correctly.
 
-Nothing to configure: it applies to every TypeScript/JavaScript buffer.
+This resolver applies **when `vtsls` is the selected server** — i.e. for projects pinned to
+TypeScript 5.x, or when no `--lsp`-capable TypeScript 7 binary is available.
+Projects on TypeScript ≥ 6 (or with no declared TypeScript) are served by `tsc` (tsgo),
+which uses nvim-lspconfig's shipped resolver instead.
+See [typescript-lsp.md](./typescript-lsp.md) for the selection rule and the
+`vim.g.ts_lsp_force_vtsls` / `vim.g.ts_lsp_force_tsgo` overrides.
+
+Nothing to configure: it applies to every TypeScript/JavaScript buffer that `vtsls` serves.
+
+> The automated gate below forces `vim.g.ts_lsp_force_vtsls = true` for the resolver checks,
+> because the resolver fixtures declare no TypeScript at all and would otherwise be tsgo's.
 
 ## How to Use
 
@@ -167,7 +177,7 @@ Neovim 0.12.5 comes from the flake; no `vtsls` binary has to be installed for th
 3. **Automated regression gate** (headless, no plugins needed):
 
    ```bash
-   pnpm test        # 12 resolver checks
+   pnpm test        # 12 resolver checks + 9 tsc/vtsls selection checks
    pnpm lint        # stylua --check on Lua files changed vs main
    pnpm typecheck   # loadfile() every Lua file in the worktree
    ```
@@ -185,7 +195,7 @@ Neovim 0.12.5 comes from the flake; no `vtsls` binary has to be installed for th
    Every candidate must report Neovim >= 0.12, otherwise it is skipped with the reason printed to stderr.
 
 4. **Expected gate output.**
-   Twelve `PASS:` lines followed by the summary line:
+   Twelve `PASS:` lines for the resolver, nine more for the server selection, followed by the summary line:
 
    ```text
    PASS: shipped vtsls default not selected
@@ -200,7 +210,16 @@ Neovim 0.12.5 comes from the flake; no `vtsls` binary has to be installed for th
    PASS: deno buffer skips vtsls
    PASS: deno buffer keeps denols
    PASS: cwd fallback
-   OK: vtsls root resolver checks passed
+   PASS: tsc: TS 5.9.3 installed does not attach
+   PASS: tsc: TS 5 declared range does not attach
+   PASS: tsc: TS 7 installed attaches
+   PASS: tsc: no typescript dependency attaches
+   PASS: tsc: forced tsgo overrides a TS 5 pin
+   PASS: vtsls: TS 5 project attaches
+   PASS: vtsls: TS 7 project refuses
+   PASS: vtsls: no TS 7 binary falls back
+   PASS: vtsls: forced vtsls overrides
+   OK: vtsls/tsc LSP selection checks passed
    ```
 
    Exit status is `0`; any failure prints a `FAIL:` line and exits non-zero.

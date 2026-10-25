@@ -282,6 +282,10 @@ return {
                   didRename = true,
                   willRename = true,
                 },
+                -- Neovim defaults this to false on Linux; without it tsgo's
+                -- workspace file watcher registration is ignored and the
+                -- server logs `file watching: disabled`.
+                didChangeWatchedFiles = { dynamicRegistration = true },
               },
             },
             -- stylua: ignore

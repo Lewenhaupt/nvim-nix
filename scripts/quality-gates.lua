@@ -9,7 +9,8 @@
 -- Modes:
 --   typecheck  parse every tracked/untracked Lua file (loadfile)
 --   lint       run stylua --check on Lua files changed relative to main
---   test       regression check for the vtsls root resolver
+--   test       regression checks for the vtsls root resolver and the
+--              vtsls/tsgo (tsc) server selection gate
 
 local mode = (_G.arg and _G.arg[1]) or ''
 local failures = 0
@@ -107,7 +108,8 @@ local function gate_lint()
   info(('stylua --check passed for %d file(s)'):format(#files))
 end
 
---- Regression check for the vtsls monorepo/workspace root resolver.
+--- Regression checks for the vtsls monorepo root resolver and the
+--- vtsls / tsgo (`tsc`) server selection gate.
 local function gate_test()
   local lsp_config = vim.lsp and vim.lsp.config
   local config_callable = lsp_config ~= nil and (type(lsp_config) == 'function' or type(rawget(getmetatable(lsp_config) or {}, '__call')) == 'function')
@@ -117,9 +119,53 @@ local function gate_test()
 
   local spec_path = vim.fs.joinpath(vim.fn.getcwd(), 'lua/custom/plugins/languages/typescript.lua')
   local spec = dofile(spec_path)
-  local setup = spec[1].opts.setup.vtsls
+  local setup_vtsls = spec[1].opts.setup.vtsls
+  local setup_tsc = spec[1].opts.setup.tsc
 
-  -- Stub the shipped defaults so the kept Deno mutual-exclusion wrapper is observable.
+  local function mkdir(path)
+    vim.fn.mkdir(path, 'p')
+  end
+
+  ---@param path string
+  ---@param content string|nil
+  local function write(path, content)
+    mkdir(vim.fs.dirname(path))
+    local file = assert(io.open(path, 'w'))
+    file:write(content or '')
+    file:close()
+  end
+
+  local tmp = vim.fn.tempname()
+  local function fixture(name)
+    local dir = vim.fs.joinpath(tmp, name)
+    mkdir(vim.fs.joinpath(dir, 'packages/a/src'))
+    return dir
+  end
+
+  -- Deterministic TS 7 / TS 5 probes: the gate must not depend on the ambient
+  -- PATH (flake wrapper) or on whatever `tsc` the host happens to expose.
+  local fake_ts7 = vim.fs.joinpath(tmp, 'fake-bin')
+  local fake_ts5 = vim.fs.joinpath(tmp, 'fake-ts5-bin')
+  write(vim.fs.joinpath(fake_ts7, 'tsc'), '#!/bin/sh\necho "Version 7.0.2"\n')
+  write(vim.fs.joinpath(fake_ts5, 'tsc'), '#!/bin/sh\necho "Version 5.9.3"\n')
+  vim.fn.system { 'chmod', '+x', vim.fs.joinpath(fake_ts7, 'tsc'), vim.fs.joinpath(fake_ts5, 'tsc') }
+
+  local original_path = vim.env.PATH or ''
+  ---@param dir string|nil prepended directory; nil keeps the ambient PATH
+  ---@param exact boolean|nil replace PATH instead of prepending
+  local function set_path(dir, exact)
+    if not dir then
+      vim.env.PATH = original_path
+    elseif exact then
+      vim.env.PATH = dir
+    else
+      vim.env.PATH = dir .. ':' .. original_path
+    end
+  end
+  local path_ts7 = fake_ts7
+  local path_ts5 = fake_ts5
+
+  -- Stub the shipped defaults so the overridden root_dir hooks are observable.
   ---@param _ integer
   ---@param on_dir fun(dir: string)
   local function denols_default(_, on_dir)
@@ -132,11 +178,18 @@ local function gate_test()
     on_dir 'VTSLS_DEFAULT'
   end
 
+  ---@param _ integer
+  ---@param on_dir fun(dir: string)
+  local function tsc_default(_, on_dir)
+    on_dir 'TSC_DEFAULT'
+  end
+
   vim.lsp.config('denols', { root_dir = denols_default })
   vim.lsp.config('vtsls', { root_dir = vtsls_default })
+  vim.lsp.config('tsc', { root_dir = tsc_default })
 
-  -- setup.vtsls also registers a Snacks LSP hook; stub Snacks so the gate does not
-  -- depend on the plugin set (or on any other unrelated production behaviour).
+  -- The setup hooks also register a Snacks LSP hook; stub Snacks so the gate does
+  -- not depend on the plugin set (or on any other unrelated production behaviour).
   local original_snacks = rawget(_G, 'Snacks')
   local hooks = {}
   _G.Snacks = {
@@ -148,7 +201,7 @@ local function gate_test()
       },
     },
   }
-  setup('vtsls', { settings = { typescript = {}, javascript = {} } })
+  setup_vtsls('vtsls', { settings = { typescript = {}, javascript = {} } })
   _G.Snacks = original_snacks
 
   if #hooks ~= 1 then
@@ -161,6 +214,16 @@ local function gate_test()
 
   if vim.lsp.config.vtsls.root_dir == vtsls_default then
     return fail 'setup.vtsls kept the shipped default root_dir instead of replacing it'
+  end
+
+  setup_tsc('tsc', { settings = { typescript = {}, javascript = {} } })
+
+  if type(vim.lsp.config.tsc.root_dir) ~= 'function' then
+    return fail 'setup.tsc did not register a root_dir'
+  end
+
+  if vim.lsp.config.tsc.root_dir == tsc_default then
+    return fail 'setup.tsc kept the shipped default root_dir instead of wrapping it'
   end
 
   ---@param server string
@@ -188,24 +251,31 @@ local function gate_test()
     end
   end
 
-  local function mkdir(path)
-    vim.fn.mkdir(path, 'p')
+  --- Reset the vim.g escape hatches used by the selection gate.
+  ---@param vtsls boolean|nil
+  ---@param tsgo boolean|nil
+  local function force(vtsls, tsgo)
+    vim.g.ts_lsp_force_vtsls = vtsls
+    vim.g.ts_lsp_force_tsgo = tsgo
   end
 
-  ---@param path string
-  ---@param content string|nil
-  local function write(path, content)
-    local file = assert(io.open(path, 'w'))
-    file:write(content or '')
-    file:close()
-  end
-
-  local tmp = vim.fn.tempname()
-  local function fixture(name)
-    local dir = vim.fs.joinpath(tmp, name)
-    mkdir(vim.fs.joinpath(dir, 'packages/a/src'))
+  --- Project fixture with the given files, rooted by a lock file.
+  ---@param name string
+  ---@param files table<string, string>
+  ---@return string dir
+  local function project(name, files)
+    local dir = fixture(name)
+    write(vim.fs.joinpath(dir, 'package-lock.json'))
+    for path, content in pairs(files) do
+      write(vim.fs.joinpath(dir, path), content)
+    end
     return dir
   end
+
+  -- The 12 resolver checks below exercise the monorepo resolver itself, so the
+  -- version gate is forced off (these fixtures declare no TypeScript at all).
+  force(true, nil)
+  set_path(path_ts7)
 
   -- Monorepo manifest (pnpm/turbo) wins over a nested package tsconfig.
   local mono = fixture 'mono'
@@ -280,9 +350,75 @@ local function gate_test()
   write(vim.fs.joinpath(none, 'packages/a/src/index.ts'))
   check('cwd fallback', resolve('vtsls', vim.fs.joinpath(none, 'packages/a/src/index.ts')), vim.fn.getcwd())
 
+  -- TS 5 project (installed compiler): vtsls owns it, tsgo must not attach.
+  local ts5_installed = project('ts5-installed', {
+    ['node_modules/typescript/package.json'] = '{"version":"5.9.3"}',
+    ['packages/a/src/index.ts'] = '',
+  })
+  local ts5_installed_file = vim.fs.joinpath(ts5_installed, 'packages/a/src/index.ts')
+
+  -- TS 5 project (declared range only): vtsls owns it as well.
+  local ts5_declared = project('ts5-declared', {
+    ['package.json'] = '{"name":"ts5","devDependencies":{"typescript":"^5.9.3"}}',
+    ['packages/a/src/index.ts'] = '',
+  })
+  local ts5_declared_file = vim.fs.joinpath(ts5_declared, 'packages/a/src/index.ts')
+
+  -- TS 7 project (installed compiler): tsgo owns it.
+  local ts7_installed = project('ts7-installed', {
+    ['node_modules/typescript/package.json'] = '{"version":"7.0.2"}',
+    ['packages/a/src/index.ts'] = '',
+  })
+  local ts7_installed_file = vim.fs.joinpath(ts7_installed, 'packages/a/src/index.ts')
+
+  -- No TypeScript dependency: unknown ⇒ tsgo (documented default).
+  local ts_unknown = project('ts-unknown', {
+    ['package.json'] = '{"name":"unknown"}',
+    ['packages/a/src/index.ts'] = '',
+  })
+  local ts_unknown_file = vim.fs.joinpath(ts_unknown, 'packages/a/src/index.ts')
+
+  -- tsc gate: TS 5.9.3 installed ⇒ no attach.
+  force(nil, nil)
+  set_path(path_ts7)
+  check('tsc: TS 5.9.3 installed does not attach', resolve('tsc', ts5_installed_file), nil)
+
+  -- tsc gate: TS 5 declared range ⇒ no attach.
+  check('tsc: TS 5 declared range does not attach', resolve('tsc', ts5_declared_file), nil)
+
+  -- tsc gate: TS 7 installed ⇒ attaches (shipped resolver).
+  check('tsc: TS 7 installed attaches', resolve('tsc', ts7_installed_file), 'TSC_DEFAULT')
+
+  -- tsc gate: no typescript dependency ⇒ attaches (unknown ⇒ tsgo).
+  check('tsc: no typescript dependency attaches', resolve('tsc', ts_unknown_file), 'TSC_DEFAULT')
+
+  -- tsc gate: forced tsgo overrides a TS 5 pin.
+  force(nil, true)
+  check('tsc: forced tsgo overrides a TS 5 pin', resolve('tsc', ts5_installed_file), 'TSC_DEFAULT')
+
+  -- vtsls gate: a TS 5 project still attaches vtsls even with a TS 7 binary on PATH.
+  force(nil, nil)
+  set_path(path_ts7)
+  check('vtsls: TS 5 project attaches', resolve('vtsls', ts5_installed_file), ts5_installed)
+
+  -- vtsls gate: a TS 7 project refuses (tsgo owns it).
+  check('vtsls: TS 7 project refuses', resolve('vtsls', ts7_installed_file), nil)
+
+  -- vtsls gate: no TS 7 binary anywhere ⇒ fall back to vtsls even for TS 7.
+  set_path(path_ts5, true)
+  check('vtsls: no TS 7 binary falls back', resolve('vtsls', ts7_installed_file), ts7_installed)
+
+  -- vtsls gate: forced vtsls overrides.
+  set_path(path_ts7)
+  force(true, nil)
+  check('vtsls: forced vtsls overrides', resolve('vtsls', ts7_installed_file), ts7_installed)
+
+  -- Restore environment and clean up.
+  force(nil, nil)
+  set_path(nil)
   vim.fn.delete(tmp, 'rf')
   if failures == 0 then
-    info 'vtsls root resolver checks passed'
+    info 'vtsls/tsc LSP selection checks passed'
   end
 end
 
